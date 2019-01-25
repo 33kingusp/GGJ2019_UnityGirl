@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 955591879}
   - component: {fileID: 955591878}
   - component: {fileID: 955591877}
+  - component: {fileID: 955591882}
   - component: {fileID: 955591881}
   m_Layer: 0
   m_Name: Girl
@@ -489,8 +490,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886f9e7001b265d4799595ac4578560c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideMoveSpeed: 2
+  sideMoveSpeed: 6
   fallSpeed: 5
+--- !u!114 &955591882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955591876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ecab6564cb43d4ab5beb0a5a1eb432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070346975
 GameObject:
   m_ObjectHideFlags: 0

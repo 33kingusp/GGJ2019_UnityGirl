@@ -60,7 +60,7 @@ public class GirlMover : MonoBehaviour
         // 現在の進んでいる方向にrayを設定する
         var ray = new Ray(transform.position, GetMoveSideDirection());
 
-        float rayDistance = (transform.lossyScale.x/2)+0.1f;
+        float rayDistance = (transform.lossyScale.x/2)+0.01f;
 
         if (Physics.Raycast(ray, rayDistance))
         {
