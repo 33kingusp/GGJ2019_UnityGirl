@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 幼女の外部公開クラス
+/// </summary>
 public class GirlProvider : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,9 +13,9 @@ public class GirlProvider : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Death()
     {
-        
+
     }
+    
 }
