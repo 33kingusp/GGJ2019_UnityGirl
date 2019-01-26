@@ -9,6 +9,27 @@ EditorBuildSettings:
     path: Assets/ReleaseScenes/Title.unity
     guid: acddce435bba5f04b9f577081edaad01
   - enabled: 1
+    path: Assets/ReleaseScenes/Ending.unity
+    guid: fdec656b56e1eab47b40a1a1652cecc1
+  - enabled: 1
     path: Assets/ReleaseScenes/Stage1.unity
-    guid: 134821f97ab018348b5406d4cbb380b2
+    guid: d6d5a25485c723542a854691c13e2401
+  - enabled: 1
+    path: Assets/ReleaseScenes/Stage2.unity
+    guid: faf6b54330706c44d9bc9cf99e7d974e
+  - enabled: 1
+    path: Assets/ReleaseScenes/Stage3.unity
+    guid: 9ecc89107c668d443b6107c5767080cf
+  - enabled: 1
+    path: Assets/ReleaseScenes/TalkStage1.unity
+    guid: 714ec5dd3e764044db86bc59e28a2bab
+  - enabled: 1
+    path: Assets/ReleaseScenes/TalkStage2.unity
+    guid: 4da7f41f2f6008c43a31f1932830de16
+  - enabled: 1
+    path: Assets/ReleaseScenes/TalkStage3.unity
+    guid: 5dad22eea7d1a5a458b51d73fddb0799
+  - enabled: 1
+    path: Assets/ReleaseScenes/TalkTutorial.unity
+    guid: 47bf2ecbd901bec449ae7786f3a82486
   m_configObjects: {}
