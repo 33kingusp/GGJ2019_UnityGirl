@@ -40,11 +40,11 @@ public class GirlMover : MonoBehaviour
     void Awake()
     {
         currentMoveState = MoveState.RIGHT;
-        //myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // 坂の動きをする
         if (MoveSlope())
@@ -76,7 +76,7 @@ public class GirlMover : MonoBehaviour
 
         movePos += GetMoveSideDirection() * sideMoveSpeed * Time.deltaTime;
 
-        transform.position = movePos;
+        myRigidbody.MovePosition(movePos);
     }
 
     private void ReverseSideMove()
@@ -87,7 +87,7 @@ public class GirlMover : MonoBehaviour
         // 通常の床のみ衝突判定を取る
         int layerMask = 1 << groundLayer | 1 << girlLayer;
 
-        float rayDistance = (transform.lossyScale.x / 2) + 0.01f;
+        float rayDistance = (transform.lossyScale.x / 2) + 0.02f;
 
         if (Physics.Raycast(ray, rayDistance, layerMask))
         {
@@ -113,9 +113,9 @@ public class GirlMover : MonoBehaviour
     {
         var movePos = transform.position;
 
-        movePos.y -= fallSpeed * Time.deltaTime;
+        movePos.y -= fallSpeed * Time.fixedDeltaTime;
 
-        transform.position = movePos;
+        myRigidbody.MovePosition(movePos);
     }
 
     private void Rotate(Quaternion rotation)
@@ -193,7 +193,7 @@ public class GirlMover : MonoBehaviour
 
         if (isHit)
         {
-            Debug.Log(hit.collider.gameObject);
+            //Debug.Log(hit.collider.gameObject);
             return hit.collider.gameObject;
         }
 
