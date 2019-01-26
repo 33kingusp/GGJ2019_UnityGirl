@@ -134,6 +134,13 @@ public class StageManager : MonoBehaviour
 	public void IncGoalGirlCount()
 	{
 		goalGirlCount++;
+	}
+
+	/// <summary>
+	/// 消滅した女の子
+	/// </summary>
+	public void IncDeleteGirlCount()
+	{
 		deletedGirlCount++;
 	}
 
