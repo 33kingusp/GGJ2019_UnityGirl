@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memo: 
   spawnGirls: 3
-  spawnGirlsIntervalTime: 0
+  spawnGirlsIntervalTime: 1
   timeLimit: 10
   gimmick1Limit: 0
   gimmick2Limit: 0
