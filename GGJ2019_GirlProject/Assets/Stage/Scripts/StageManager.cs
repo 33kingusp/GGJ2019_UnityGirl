@@ -11,6 +11,12 @@ using UnityEngine.UI;
 /// </summary>
 public class StageManager : MonoBehaviour
 {
+	private static StageManager _instance;
+	public static StageManager Instance
+	{
+		get { return _instance; }
+	}
+
 	[SerializeField]
 	public StageData stageData;
 
@@ -49,6 +55,17 @@ public class StageManager : MonoBehaviour
 	[SerializeField]
 	public int goalGirlCount;
 
+	void Awake()
+	{
+		if(_instance == null)
+		{
+			_instance = this;
+		}
+		else
+		{
+			Destroy(this);
+		}
+	}
     void Start()
     {
 		// 初期化
