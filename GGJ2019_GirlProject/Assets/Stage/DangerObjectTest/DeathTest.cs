@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ゴールポイントの処理:
-/// </summary>
-public class GoalPoint : MonoBehaviour
+public class DeathTest : MonoBehaviour
 {
-
 	[SerializeField]
 	StageManager stageManager;
 
- 	void Goal()
+ 	void Death()
 	{
-		stageManager.IncGoalGirlCount();
 		stageManager.IncDeleteGirlCount();
 	}
 
@@ -26,7 +21,8 @@ public class GoalPoint : MonoBehaviour
 		{
 			var girlProvider = gameObject.GetComponent<GirlProvider>();
 			girlProvider.Death();
-			Goal();
+			Death();
 		}
 	}
+
 }
