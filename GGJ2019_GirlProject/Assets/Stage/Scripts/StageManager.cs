@@ -215,7 +215,6 @@ public class StageManager : MonoBehaviour
 	/// </summary>
 	void StageClear()
 	{
-		Debug.Log("stage clear");
 		clearPanel.SetActive(true);
 		RecordManager.Instance.SaveRecord(stageData.stageId, stageData.spawnGirls, goalGirlCount, currentTime);
 	}
@@ -225,7 +224,6 @@ public class StageManager : MonoBehaviour
 	/// </summary>
 	void StageGameOver()
 	{
-		Debug.Log("gameover");
 		gameOverPanel.SetActive(true);
 	}
 
