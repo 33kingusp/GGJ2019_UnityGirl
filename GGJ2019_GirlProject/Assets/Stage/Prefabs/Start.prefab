@@ -95,3 +95,4 @@ MonoBehaviour:
   girl1: {fileID: 7539648045251119060, guid: 1fe46f2b312fcdc4b912afe3d0e2be31, type: 3}
   girl2: {fileID: 1047345178, guid: 6c780c9e30dace84498f62509e3d3005, type: 3}
   girl3: {fileID: 741403282, guid: 5d44917f8ff17334c8d3ecc938043418, type: 3}
+  girl4: {fileID: 8638082036149755849, guid: f2e69f6fb6f80a64b8b63cd4698ce4b2, type: 3}
