@@ -38,6 +38,8 @@ public class GirlMover : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private bool isRotate = false;
+
     private enum MoveState
     {
         RIGHT = 1,
@@ -47,7 +49,7 @@ public class GirlMover : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -76,18 +78,27 @@ public class GirlMover : MonoBehaviour
         {
             //Rotate(Quaternion.identity);
             FallMove();
-            Debug.Log("接地していないので落下します");
+            //Debug.Log("接地していないので落下します");
             return;
         }
         //}
 
-        FallMove();
+        //FallMove();
 
         // 壁に衝突したかどうかを取得し、衝突時動作をする
-        ReverseSideMove();
+        if (JudgeReverseSide())
+        {
+            if(!isRotate){
+                ReverseSideMove();
+                return;
+            }
+  
+        }
 
-        SideMove();
-
+        if (!isRotate)
+        {
+            SideMove();
+        }
     }
 
     private void SideMove()
@@ -99,35 +110,46 @@ public class GirlMover : MonoBehaviour
         myRigidbody.MovePosition(movePos);
     }
 
-    private void ReverseSideMove()
+    private bool JudgeReverseSide()
     {
+
+        Vector3 rayOrigin = transform.position;
+
+        rayOrigin.y += transform.lossyScale.y / 2;
+
         // 現在の進んでいる方向にrayを設定する
-        var ray = new Ray(transform.position, GetMoveSideDirection());
+        var ray = new Ray(rayOrigin, GetMoveSideDirection());
 
         // 通常の床のみ衝突判定を取る
         int layerMask = 1 << groundLayer | 1 << girlLayer;
 
         float rayDistance = (transform.lossyScale.x / 2) + 0.02f;
 
-        if (Physics.Raycast(ray, rayDistance, layerMask))
-        {
-            switch (currentMoveState)
-            {
-                case MoveState.RIGHT:
-                    ChangeMoveState(MoveState.LEFT);
-                    break;
+        RaycastHit hit;
 
-                case MoveState.LEFT:
-                    ChangeMoveState(MoveState.RIGHT);
-                    break;
-            }
+        return Physics.Raycast(ray.origin, ray.direction, out hit, rayDistance, layerMask);
+    }
+
+    public void ReverseSideMove()
+    {
+        switch (currentMoveState)
+        {
+            case MoveState.RIGHT:
+                ChangeMoveState(MoveState.LEFT);
+                break;
+
+            case MoveState.LEFT:
+                ChangeMoveState(MoveState.RIGHT);
+                break;
         }
     }
 
     private void ChangeMoveState(MoveState moveState)
     {
+        isRotate = true;
         currentMoveState = moveState;
         spriteRenderer.flipX = !spriteRenderer.flipX;
+        isRotate = false;
     }
 
     private void FallMove()
@@ -179,7 +201,7 @@ public class GirlMover : MonoBehaviour
         rayOrigin.y += groundRayDistance;
 
         // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << groundLayer | 1<< slopeLayer;
+        int layerMask = 1 << groundLayer | 1 << slopeLayer;
 
         RaycastHit hit;
 

@@ -7,15 +7,23 @@ using UnityEngine;
 /// </summary>
 public class GirlProvider : MonoBehaviour
 {
+
+    private GirlMover girlMover;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        girlMover = GetComponent<GirlMover>();
     }
 
     public void Death()
     {
 		Destroy(gameObject);
+    }
+
+    public void ReverseMoveDirection()
+    {
+        girlMover.ReverseSideMove();
     }
     
 }

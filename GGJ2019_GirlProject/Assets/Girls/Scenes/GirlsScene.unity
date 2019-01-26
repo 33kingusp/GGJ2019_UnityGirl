@@ -1470,25 +1470,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291001880}
   m_CullTransparentMesh: 0
---- !u!1 &1297038332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7539648045251119060, guid: 1fe46f2b312fcdc4b912afe3d0e2be31,
-    type: 3}
-  m_PrefabInstance: {fileID: 7539648043996838952}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1297038333
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297038332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.908, y: 1.008, z: 0.2}
-  m_Center: {x: 0, y: 0.504, z: 0}
 --- !u!1 &1378611987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,26 +2074,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539648045251119062, guid: 1fe46f2b312fcdc4b912afe3d0e2be31,
-        type: 3}
-      propertyPath: groundRayDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539648045251119062, guid: 1fe46f2b312fcdc4b912afe3d0e2be31,
-        type: 3}
-      propertyPath: fallSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539648045251119062, guid: 1fe46f2b312fcdc4b912afe3d0e2be31,
-        type: 3}
-      propertyPath: sideMoveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539648045251117098, guid: 1fe46f2b312fcdc4b912afe3d0e2be31,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe46f2b312fcdc4b912afe3d0e2be31, type: 3}
