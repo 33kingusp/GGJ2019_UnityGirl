@@ -47,22 +47,22 @@ public class OperationCanvasUI : MonoBehaviour
 	{
 		if (stageData.gimmick1Object == null)
 		{
-			gimmick1Button.SetActive(true);
+			gimmick1Button.SetActive(false);
 		}
 
 		if (stageData.gimmick2Object == null)
 		{
-			gimmick2Button.SetActive(true);
+			gimmick2Button.SetActive(false);
 		}
 
 		if (stageData.gimmick3Object == null)
 		{
-			gimmick3Button.SetActive(true);
+			gimmick3Button.SetActive(false);
 		}
 
 		if (stageData.gimmick4Object == null)
 		{
-			gimmick4Button.SetActive(true);
+			gimmick4Button.SetActive(false);
 		}
 	}
 
