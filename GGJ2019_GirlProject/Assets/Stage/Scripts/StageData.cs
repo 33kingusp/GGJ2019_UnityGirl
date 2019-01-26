@@ -23,7 +23,7 @@ public class StageData : ScriptableObject
 
 	[SerializeField]
 	[Tooltip("タイムリミット")]
-	public int timeLimit;
+	public float timeLimit;
 
 	[SerializeField]
 	[Tooltip("ギミック1のprefab")]
