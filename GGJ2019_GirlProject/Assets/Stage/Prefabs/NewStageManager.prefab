@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 618846378}
   - component: {fileID: 618846377}
   - component: {fileID: 618846376}
+  - component: {fileID: 1497935550}
   m_Layer: 5
   m_Name: OperationCanvas
   m_TagString: Untagged
@@ -456,6 +457,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1497935550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618846374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d4dadcda9e5ef4d820a23772df74d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gimmick1Button: {fileID: 2491137697648538155}
+  gimmick2Button: {fileID: 2588701278865236416}
+  gimmick3Button: {fileID: 2930430699181326438}
+  gimmick4Button: {fileID: 2709764755763294155}
+  gimmick1Text: {fileID: 7835166166775230710}
+  gimmick2Text: {fileID: 1754935874758292988}
+  gimmick3Text: {fileID: 4480160532613164145}
+  gimmick4Text: {fileID: 5038106250369418424}
 --- !u!1 &987074634
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e09980a2919af4ebcb5fabe3fe704f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 672eb4706cbb11e4a8a46bcee742be5f, type: 2}
+  stageData: {fileID: 11400000, guid: f8e4e8afe706e8b4e999a924dc520760, type: 2}
   clearPanel: {fileID: 378584329}
   gameOverPanel: {fileID: 411950247}
   isEnd: 0
@@ -670,12 +691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc8ddeb6a84f04e9353b77c47948f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gimmick1Prefab: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
-    type: 3}
-  gimmick2Prefab: {fileID: 3310093692017745428, guid: 7b6ff67b2aad75346af2c16b2260b2ca,
-    type: 3}
-  gimmick3Prefab: {fileID: 0}
-  gimmick4Prefab: {fileID: 0}
 --- !u!1 &1565560001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1475,7 @@ GameObject:
   - component: {fileID: 1691439924381368705}
   - component: {fileID: 4480160532613164145}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Gimmick3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,7 +1854,7 @@ GameObject:
   - component: {fileID: 1798190940533099284}
   - component: {fileID: 5038106250369418424}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Gimmick4Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1918,7 +1933,7 @@ GameObject:
   - component: {fileID: 5691653221086947645}
   - component: {fileID: 7835166166775230710}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Gimmick1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1997,7 +2012,7 @@ GameObject:
   - component: {fileID: 3822124096491004219}
   - component: {fileID: 1754935874758292988}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Gimmick2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
