@@ -221,7 +221,7 @@ public class GirlMover : MonoBehaviour
 
         RaycastHit hit;
 
-        Vector3 boxSize = transform.lossyScale / 2;
+        Vector3 boxSize = transform.lossyScale *0.4f;
 
         boxSize.y = groundRayBoxSize_Y;
 
