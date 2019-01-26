@@ -62,13 +62,16 @@ public class StageManager : MonoBehaviour
 	{
 		if(_instance == null)
 		{
+			Debug.Log("instance null");
 			_instance = this;
 		}
 		else
 		{
+			Debug.Log("destrpy");
 			Destroy(this);
 		}
 	}
+
     void Start()
     {
 		// 初期化
@@ -184,28 +187,8 @@ public class StageManager : MonoBehaviour
 
     public void OnClickGimmick(int gimmicNo)
     {
-        currentGimmickNo = gimmicNo;
+		Debug.Log(gimmicNo);
+		Debug.Log("clickgimick");
+		currentGimmickNo = gimmicNo;
     }
-
-    /*
-	public void OnClickGimmick1()
-	{
-		currentGimmickNo = 1;
-	}
-
-	public void OnClickGimmick2()
-	{
-		currentGimmickNo = 2;
-	}
-
-	public void OnClickGimmick3()
-	{
-		currentGimmickNo = 3;
-	}
-
-	public void OnClickGimmick4()
-	{
-		currentGimmickNo = 4;
-	}
-    */
 }

@@ -68,5 +68,6 @@ public class PlayerGimmickSetter : MonoBehaviour
         // ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
         Vector3 position = GridManager.GetGridPosition(Camera.main.ScreenToWorldPoint(clickPosition));
         Instantiate(prefab, position, prefab.transform.rotation);
+		Debug.Log(position);
     }
 }

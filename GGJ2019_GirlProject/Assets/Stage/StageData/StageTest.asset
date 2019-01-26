@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3712a253015109640bd2b8046018ee42, type: 3}
   m_Name: StageTest
   m_EditorClassIdentifier: 
-  memo: 
+  stageId: 0
+  memo: "\u30B9\u30C6\u30FC\u30B8\u30C6\u30B9\u30C8"
   spawnGirls: 3
   spawnGirlsIntervalTime: 1
   timeLimit: 10
-  gimmick1Limit: 0
-  gimmick2Limit: 0
+  gimmick1Limit: 2
+  gimmick2Limit: 2
   gimmick3Limit: 0
   gimmick4Limit: 0
