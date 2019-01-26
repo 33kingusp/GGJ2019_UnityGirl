@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-    public void StartStage1()
+    public void StartTutorial()
     {	
-        SceneManager.LoadScene("ReleaseScenes/Stage1");
+        SceneManager.LoadScene("ReleaseScenes/TalkTutorial");
     }
+
+	public void SkipTutorial()
+	{
+		SceneManager.LoadScene("ReleaseScenes/TalkStage1");
+	}
 }
