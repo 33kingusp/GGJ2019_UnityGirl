@@ -182,6 +182,12 @@ public class StageManager : MonoBehaviour
 		gameOverPanel.SetActive(true);
 	}
 
+    public void OnClickGimmick(int gimmicNo)
+    {
+        currentGimmickNo = gimmicNo;
+    }
+
+    /*
 	public void OnClickGimmick1()
 	{
 		currentGimmickNo = 1;
@@ -201,4 +207,5 @@ public class StageManager : MonoBehaviour
 	{
 		currentGimmickNo = 4;
 	}
+    */
 }
