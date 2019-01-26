@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebc8ddeb6a84f04e9353b77c47948f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gimmick1Prefab: {fileID: 1691692792461695517, guid: 1f87aea260319494983a09e31c3d4f01,
+  gimmick1Prefab: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
     type: 3}
-  gimmick2Prefab: {fileID: 6420534575143207958, guid: aa391ce4953b3dc4a8ce994e0f628577,
+  gimmick2Prefab: {fileID: 3310093692017745428, guid: 7b6ff67b2aad75346af2c16b2260b2ca,
     type: 3}
   gimmick3Prefab: {fileID: 0}
   gimmick4Prefab: {fileID: 0}
@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6228453545723771872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06827587, y: 1.345814, z: 0.21525465}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3647145001272810581}
