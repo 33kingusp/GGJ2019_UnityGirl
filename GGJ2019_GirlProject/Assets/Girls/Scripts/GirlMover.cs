@@ -17,9 +17,9 @@ public class GirlMover : MonoBehaviour
     [SerializeField]
     private float fallSpeed = 5f;
 
-    private MoveState currentMoveState = MoveState.RIGHT;
+    private MoveDirectionState currentMoveDirectionState = MoveDirectionState.RIGHT;
 
-    public MoveState CurrentMoveState { get => currentMoveState; }
+    public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
 
     private Rigidbody myRigidbody;
 
@@ -42,9 +42,15 @@ public class GirlMover : MonoBehaviour
 
     private bool isRotate = false;
 
-    
+    private MoveState currentMoveState;
 
     public enum MoveState
+    {
+        AUTO,
+        FORCE
+    }
+
+    public enum MoveDirectionState
     {
         RIGHT = 1,
         LEFT = -1
@@ -60,34 +66,20 @@ public class GirlMover : MonoBehaviour
 
     private void Start()
     {
-        ChangeMoveState(MoveState.RIGHT);
+        ChangeMoveDirectionState(MoveDirectionState.RIGHT);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //// 坂の動きをする
-        //if (MoveSlope())
-        //{
-
-        //}
-        //else
-        //{
-
-        //FallMove();
 
         var groundObject = JudgeIsGround();
         // 接地していない場合
         if (!groundObject)
         {
-            //Rotate(Quaternion.identity);
             FallMove();
-            //Debug.Log("接地していないので落下します");
             return;
         }
-        //}
-
-        //FallMove();
 
         // 壁に衝突したかどうかを取得し、衝突時動作をする
         if (JudgeReverseSide())
@@ -99,6 +91,7 @@ public class GirlMover : MonoBehaviour
   
         }
 
+        //switch ()
         if (!isRotate)
         {
             SideMove();
@@ -117,6 +110,11 @@ public class GirlMover : MonoBehaviour
     private bool JudgeReverseSide()
     {
 
+        return JudgeReverseSide(girlLayer);
+    }
+
+    private bool JudgeReverseSide(int maskLayer)
+    {
         Vector3 rayOrigin = transform.position;
 
         rayOrigin.y += transform.lossyScale.y / 2;
@@ -125,7 +123,7 @@ public class GirlMover : MonoBehaviour
         var ray = new Ray(rayOrigin, GetMoveSideDirection());
 
         // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << groundLayer | 1 << girlLayer;
+        int layerMask = 1 << groundLayer | 1 << maskLayer;
 
         float rayDistance = (transform.lossyScale.x / 2) + 0.02f;
 
@@ -136,22 +134,22 @@ public class GirlMover : MonoBehaviour
 
     public void ReverseSideMove()
     {
-        switch (CurrentMoveState)
+        switch (CurrentMoveDirectionState)
         {
-            case MoveState.RIGHT:
-                ChangeMoveState(MoveState.LEFT);
+            case MoveDirectionState.RIGHT:
+                ChangeMoveDirectionState(MoveDirectionState.LEFT);
                 break;
 
-            case MoveState.LEFT:
-                ChangeMoveState(MoveState.RIGHT);
+            case MoveDirectionState.LEFT:
+                ChangeMoveDirectionState(MoveDirectionState.RIGHT);
                 break;
         }
     }
 
-    private void ChangeMoveState(MoveState moveState)
+    private void ChangeMoveDirectionState(MoveDirectionState moveState)
     {
         isRotate = true;
-        currentMoveState = moveState;
+        currentMoveDirectionState = moveState;
         spriteRenderer.flipX = !spriteRenderer.flipX;
         isRotate = false;
     }
@@ -180,10 +178,6 @@ public class GirlMover : MonoBehaviour
             isSlope = true;
             Rotate(slopeObject.transform.rotation);
 
-            //Vector3 movepos = transform.position;
-            //movepos.y = slopeObject.transform.position.y + (transform.lossyScale.y / 2f) + (slopeObject.transform.lossyScale.y / 2f);
-
-            //transform.position = movepos;
         }
         else
         {
@@ -253,6 +247,6 @@ public class GirlMover : MonoBehaviour
 
     private Vector3 GetMoveSideDirection()
     {
-        return transform.right * (int)CurrentMoveState;
+        return transform.right * (int)CurrentMoveDirectionState;
     }
 }

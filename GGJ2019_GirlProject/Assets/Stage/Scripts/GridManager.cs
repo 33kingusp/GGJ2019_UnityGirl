@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager
 {
 
     /// <summary>
@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     /// </summary>
     /// <param name="position"></param>
     /// <returns></returns>
-    public Vector3 GetGridPosition(Vector3 position)
+    public static Vector3 GetGridPosition(Vector3 position)
     {
         
         Vector3 gridPos = position;
