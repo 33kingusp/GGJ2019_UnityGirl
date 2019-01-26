@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class DangerObjectController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        GirlProvider girl =  other.GetComponent<GirlProvider>();
+        if(other != null)
+        {
+            
+        }
     }
 }
