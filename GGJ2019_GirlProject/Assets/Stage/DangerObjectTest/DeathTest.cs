@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DeathTest : MonoBehaviour
 {
-	[SerializeField]
-	StageManager stageManager;
 
  	void Death()
 	{
-		stageManager.IncDeleteGirlCount();
+		StageManager.Instance.IncDeleteGirlCount();
 	}
 
 	private void OnTriggerEnter(Collider collider)

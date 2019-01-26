@@ -7,6 +7,10 @@ public class StageData : ScriptableObject
 {
 	[SerializeField]
 	[Tooltip("このファイルのメモ")]
+	public int stageId;
+
+	[SerializeField]
+	[Tooltip("このファイルのメモ")]
 	public string memo;
 
 	[SerializeField]

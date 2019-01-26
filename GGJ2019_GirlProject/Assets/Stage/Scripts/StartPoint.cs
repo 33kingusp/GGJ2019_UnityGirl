@@ -10,12 +10,9 @@ public class StartPoint : MonoBehaviour
 	[SerializeField]
 	public GameObject girl;
 
-	[SerializeField]
-	public StageManager stageManager;
-
     void Start()
     {
-		var stageData = stageManager.stageData;
+		var stageData = StageManager.Instance.stageData;
 
 		StartCoroutine(
 			SpawnGirl(stageData.spawnGirlsIntervalTime, stageData.spawnGirls)

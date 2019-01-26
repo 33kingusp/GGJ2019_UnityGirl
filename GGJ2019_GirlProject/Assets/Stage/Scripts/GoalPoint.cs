@@ -8,13 +8,10 @@ using UnityEngine;
 public class GoalPoint : MonoBehaviour
 {
 
-	[SerializeField]
-	StageManager stageManager;
-
  	void Goal()
 	{
-		stageManager.IncGoalGirlCount();
-		stageManager.IncDeleteGirlCount();
+		StageManager.Instance.IncGoalGirlCount();
+		StageManager.Instance.IncDeleteGirlCount();
 	}
 
 	private void OnTriggerEnter(Collider collider)
