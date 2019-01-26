@@ -6745,22 +6745,22 @@ PrefabInstance:
     - target: {fileID: 6228453545723771872, guid: dc1e93b1b1347c04a8f9cf412f215b5b,
         type: 3}
       propertyPath: m_Name
-      value: StageManager (1)
+      value: StageManager
       objectReference: {fileID: 0}
     - target: {fileID: 6228453545723771874, guid: dc1e93b1b1347c04a8f9cf412f215b5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06827587
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6228453545723771874, guid: dc1e93b1b1347c04a8f9cf412f215b5b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.345814
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6228453545723771874, guid: dc1e93b1b1347c04a8f9cf412f215b5b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.21525465
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6228453545723771874, guid: dc1e93b1b1347c04a8f9cf412f215b5b,
         type: 3}

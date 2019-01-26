@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4aab0e7ff763841ae14b85556f932f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gimmickSize: {x: 2, y: 1}
   gimmickCollider: {fileID: 3553813103946602449}
 --- !u!1 &7297501281441470018
 GameObject:
