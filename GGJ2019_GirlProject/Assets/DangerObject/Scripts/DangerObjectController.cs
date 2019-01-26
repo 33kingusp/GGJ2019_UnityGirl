@@ -6,16 +6,16 @@ public class DangerObjectController : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GirlProvider girl =  other.GetComponent<GirlProvider>();
+        Debug.Log("Collision");
+        GirlProvider girl = other.gameObject.GetComponent<GirlProvider>();
 
-        if (other != null)
-        {
-            
-        }
+        if (girl != null)
+            KillGirl(girl);
     }
 
     protected virtual void KillGirl(GirlProvider girlProvider)
     {
-
+        Debug.Log("KillGirl : " + girlProvider);
+        girlProvider.Death();
     }
 }
