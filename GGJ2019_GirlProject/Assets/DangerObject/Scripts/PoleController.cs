@@ -9,6 +9,6 @@ public class PoleController : DangerObjectController
 
     public void MoveCrow()
     {
-        crow.Move(nextPole.transform.position + Vector3.up * 4, 5f);
+        crow.MoveToPole(nextPole);
     }
 }

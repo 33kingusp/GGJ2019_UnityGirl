@@ -21,12 +21,17 @@ public class CrowController : MonoBehaviour
             GirlProvider girl = hit.collider.GetComponent<GirlProvider>();
             if (girl)
             {
-                
+                girl.ReverseMoveDirection();
             }
         }
     }
 
-    public void Move(Vector3 position, float delay)
+    public void MoveToPole(PoleController pole)
+    {
+        Move(pole.transform.position + Vector3.up * 4, 5f);
+    }
+
+    private void Move(Vector3 position, float delay)
     {
         if(isMoveing)
             StopCoroutine(moveEnumerator);
