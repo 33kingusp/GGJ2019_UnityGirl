@@ -20,6 +20,7 @@ public class GirlMover : MonoBehaviour
     private MoveDirectionState currentMoveDirectionState = MoveDirectionState.RIGHT;
 
     public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
+    
 
     private Rigidbody myRigidbody;
 
@@ -36,18 +37,24 @@ public class GirlMover : MonoBehaviour
 
     private int groundLayer = 8;
 
-    private int girlLayer = 10;
+    private const int girlLayer = 10;
 
     private SpriteRenderer spriteRenderer;
 
     private bool isRotate = false;
 
-    private MoveState currentMoveState;
+    [SerializeField]
+    private int sideMoveMaskLayer = girlLayer;
+
+    private MoveState currentMoveState = MoveState.AUTO;
+
+    public MoveState CurrentMoveState { get => currentMoveState; }
 
     public enum MoveState
     {
         AUTO,
-        FORCE
+        FORCE,
+        FEAR
     }
 
     public enum MoveDirectionState
@@ -82,20 +89,31 @@ public class GirlMover : MonoBehaviour
         }
 
         // 壁に衝突したかどうかを取得し、衝突時動作をする
-        if (JudgeReverseSide())
+        if (JudgeReverseSide(sideMoveMaskLayer))
         {
-            if(!isRotate){
+            if (!isRotate)
+            {
                 ReverseSideMove();
                 return;
             }
-  
+
         }
 
-        //switch ()
-        if (!isRotate)
+        // 回転中は移動しない
+        if (isRotate) { return; }
+        switch (CurrentMoveState)
         {
-            SideMove();
+            case MoveState.AUTO:
+                SideMove();
+                break;
+            case MoveState.FORCE:
+                SideMove();
+                break;
+            case MoveState.FEAR:
+                SideMove();
+                break;
         }
+
     }
 
     private void SideMove()
@@ -248,5 +266,17 @@ public class GirlMover : MonoBehaviour
     private Vector3 GetMoveSideDirection()
     {
         return transform.right * (int)CurrentMoveDirectionState;
+    }
+
+    public void ChangeMoveState(MoveState moveState,float time)
+    {
+        StartCoroutine(MoveStateCoroutine(moveState, time));
+    }
+
+    private IEnumerator MoveStateCoroutine(MoveState moveState, float time)
+    {
+        currentMoveState = moveState;
+        yield return new WaitForSeconds(time);
+        currentMoveState = MoveState.AUTO;
     }
 }
