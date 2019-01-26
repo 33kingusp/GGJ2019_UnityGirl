@@ -15,7 +15,7 @@ public class GirlProvider : MonoBehaviour
 
     public void Death()
     {
-
+		Destroy(gameObject);
     }
     
 }
