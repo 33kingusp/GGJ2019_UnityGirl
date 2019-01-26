@@ -363,7 +363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   girl: {fileID: 8836662679848930061, guid: 1fe46f2b312fcdc4b912afe3d0e2be31, type: 3}
-  stageManager: {fileID: 1904271327}
 --- !u!1 &433555853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,7 +1829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb20a9a428bc7f43934a58b760640d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageManager: {fileID: 1904271327}
 --- !u!65 &1150826646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2796,8 +2794,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1904271328}
   - component: {fileID: 1904271327}
+  - component: {fileID: 1904271329}
   m_Layer: 0
-  m_Name: StageManager
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2840,6 +2839,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1904271329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904271326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21adc6c5f85f24846951e40055c2de10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1936726413
 GameObject:
   m_ObjectHideFlags: 0
