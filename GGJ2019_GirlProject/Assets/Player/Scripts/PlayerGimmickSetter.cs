@@ -26,11 +26,11 @@ public class PlayerGimmickSetter : MonoBehaviour
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0))
         {
-            SetGimmick();
+            SetDummyGimmick();
         }
     }
 
-    void SetGimmick()
+    private void SetDummyGimmick()
     {
         int currentGimmickNo = StageManager.Instance.currentGimmickNo;
         if (currentGimmickNo == 0)
@@ -39,12 +39,13 @@ public class PlayerGimmickSetter : MonoBehaviour
             return;
         }
 
-
+        /*
         // ここでの注意点は座標の引数にVector2を渡すのではなく、Vector3を渡すことである。
         // Vector3でマウスがクリックした位置座標を取得する
         clickPosition = Input.mousePosition;
         // Z軸修正
         clickPosition.z = 10f;
+        */
 
         GameObject prefab = gimmick1Prefab;
 
@@ -66,7 +67,24 @@ public class PlayerGimmickSetter : MonoBehaviour
 
         // オブジェクト生成 : オブジェクト(GameObject), 位置(Vector3), 角度(Quaternion)
         // ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
-        Vector3 position = GridManager.GetGridPosition(Camera.main.ScreenToWorldPoint(clickPosition));
-        Instantiate(prefab, position, prefab.transform.rotation);
+        GimmickObjectController gimmick = Instantiate(prefab, GetGridClickPosition(), prefab.transform.rotation).GetComponent<GimmickObjectController>();
+        StartCoroutine(SetGimmick(gimmick));
+    }
+
+    private IEnumerator SetGimmick(GimmickObjectController gimmick)
+    {
+        do
+        {
+            gimmick.transform.position = GetGridClickPosition();
+            yield return null;
+        }
+        while (!Input.GetMouseButtonUp(0));
+        gimmick.Set();
+        yield break;
+    }
+
+    private Vector3 GetGridClickPosition()
+    {
+        return GridManager.GetGridPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f));
     }
 }
