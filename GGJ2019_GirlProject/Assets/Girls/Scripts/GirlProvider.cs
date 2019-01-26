@@ -38,19 +38,9 @@ public class GirlProvider : MonoBehaviour
         girlMover.ReverseSideMove();
     }
 
-    public GirlMover.MoveDirectionState GetGirlMoveDirectionState()
+    public GirlMover.MoveDirectionState GetGirlMoveState()
     {
         return girlMover.CurrentMoveDirectionState;
     } 
-
-    public GirlMover.MoveState GetGirlMoveState()
-    {
-        return girlMover.CurrentMoveState;
-    }
-
-    public void Fear(float time)
-    {
-
-    }
     
 }

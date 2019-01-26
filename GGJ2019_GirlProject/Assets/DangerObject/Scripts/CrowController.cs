@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CrowController : MonoBehaviour
 {
-    [SerializeField] Animator animator;
     [SerializeField] private PoleController startPole;
     private IEnumerator moveEnumerator = null;
     private bool isMoveing;
@@ -27,7 +26,6 @@ public class CrowController : MonoBehaviour
             GirlProvider girl = hit.collider.GetComponent<GirlProvider>();
             if (girl)
             {
-                // != girl.GetGirlMoveState();
                 girl.ReverseMoveDirection();
             }
         }
@@ -45,13 +43,8 @@ public class CrowController : MonoBehaviour
     private IEnumerator MovePositon(PoleController pole, float delay)
     {
         isMoveing = true;
-        animator.SetBool("isFrying", true);
         Vector3 oldPosition = transform.position;
         Vector3 position = pole.transform.position + Vector3.up * 4;
-
-        if (position.x - oldPosition.x <= 0) transform.eulerAngles = Vector3.zero;
-        else transform.eulerAngles = Vector3.up * 180;
-
         float t = 0;
 
         do
@@ -63,7 +56,6 @@ public class CrowController : MonoBehaviour
         while (t <= delay) ;
         transform.position = position;
         isMoveing = false;
-        animator.SetBool("isFrying", false);
         pole.StopCrow(this);
         yield break;
     }

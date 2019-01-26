@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ecab6564cb43d4ab5beb0a5a1eb432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTimer: 0.3
+  deathTimer: 0
 --- !u!114 &7539648045251119062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,6 @@ MonoBehaviour:
   groundRayDistance: 0.1
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
-  sideMoveMaskLayer: 10
 --- !u!54 &7539648045251119061
 Rigidbody:
   m_ObjectHideFlags: 0
