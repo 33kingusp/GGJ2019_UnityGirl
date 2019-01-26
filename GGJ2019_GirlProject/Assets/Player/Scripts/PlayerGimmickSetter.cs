@@ -34,7 +34,9 @@ public class PlayerGimmickSetter : MonoBehaviour
     private void SetDummyGimmick()
     {
         int currentGimmickNo = StageManager.Instance.currentGimmickNo;
-        if (currentGimmickNo == 0)
+
+		Debug.Log(StageManager.Instance.JudgeRemainingGimmickCount());
+        if (currentGimmickNo == 0 || !StageManager.Instance.JudgeRemainingGimmickCount())
         {
             // 出さない
             return;
@@ -65,6 +67,8 @@ public class PlayerGimmickSetter : MonoBehaviour
                 prefab = gimmick4Prefab;
                 break;
         }
+
+		StageManager.Instance.IncCurrentGimmickCount();
 
         // オブジェクト生成 : オブジェクト(GameObject), 位置(Vector3), 角度(Quaternion)
         // ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
