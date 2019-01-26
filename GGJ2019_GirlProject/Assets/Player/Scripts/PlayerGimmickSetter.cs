@@ -35,7 +35,6 @@ public class PlayerGimmickSetter : MonoBehaviour
     {
         int currentGimmickNo = StageManager.Instance.currentGimmickNo;
 
-		Debug.Log(StageManager.Instance.JudgeRemainingGimmickCount());
         if (currentGimmickNo == 0 || !StageManager.Instance.JudgeRemainingGimmickCount())
         {
             // 出さない

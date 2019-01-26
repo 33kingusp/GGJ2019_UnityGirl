@@ -50,7 +50,7 @@ public class StageData : ScriptableObject
 	public int gimmick3Limit;
 
 	[SerializeField]
-	[Tooltip("ギミック3のprefab")]
+	[Tooltip("ギミック4のprefab")]
 	public GameObject gimmick4Object;
 
 	[SerializeField]
