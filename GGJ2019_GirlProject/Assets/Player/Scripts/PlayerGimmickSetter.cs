@@ -5,24 +5,19 @@ using UnityEngine.EventSystems;
 
 public class PlayerGimmickSetter : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject gimmick1Prefab;
-
-    [SerializeField]
-    public GameObject gimmick2Prefab;
-
-    [SerializeField]
-    public GameObject gimmick3Prefab;
-
-    [SerializeField]
-    public GameObject gimmick4Prefab;
+	StageData stageData;
 
     // 位置座標
     private Vector3 clickPosition;
     // スクリーン座標をワールド座標に変換した位置座標
     private Vector3 screenToWorldPointPosition;
 
-    public void Update()
+	void Start()
+	{
+		stageData = StageManager.Instance.stageData;
+	}
+
+	public void Update()
     {
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0) && !IsUGUIHit(Input.mousePosition))
@@ -34,7 +29,8 @@ public class PlayerGimmickSetter : MonoBehaviour
     private void SetDummyGimmick()
     {
         int currentGimmickNo = StageManager.Instance.currentGimmickNo;
-        if (currentGimmickNo == 0)
+
+        if (currentGimmickNo == 0 || !StageManager.Instance.JudgeRemainingGimmickCount())
         {
             // 出さない
             return;
@@ -48,21 +44,21 @@ public class PlayerGimmickSetter : MonoBehaviour
         clickPosition.z = 10f;
         */
 
-        GameObject prefab = gimmick1Prefab;
+        GameObject prefab = stageData.gimmick1Object;
 
         switch (currentGimmickNo)
         {
             case 1:
-                prefab = gimmick1Prefab;
+                prefab = stageData.gimmick1Object;
                 break;
             case 2:
-                prefab = gimmick2Prefab;
+                prefab = stageData.gimmick2Object;
                 break;
             case 3:
-                prefab = gimmick3Prefab;
+                prefab = stageData.gimmick3Object;
                 break;
             case 4:
-                prefab = gimmick4Prefab;
+                prefab = stageData.gimmick4Object;
                 break;
         }
 
@@ -82,9 +78,15 @@ public class PlayerGimmickSetter : MonoBehaviour
         while (!Input.GetMouseButtonUp(0));
 
         if (IsUGUIHit(Input.mousePosition) || !gimmick.Set())
+		{
             Cancel(gimmick);
+		}
+		else
+		{
+			StageManager.Instance.IncCurrentGimmickCount();
+		}
 
-        yield break;
+		yield break;
     }
 
     private void Cancel(GimmickObjectController gimmick)

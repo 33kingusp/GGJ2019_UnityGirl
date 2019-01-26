@@ -148,6 +148,28 @@ public class StageManager : MonoBehaviour
 	}
 
 	/// <summary>
+	/// 残り回数がある場合はTrueになる
+	/// </summary>
+	/// <returns></returns>
+	public bool JudgeRemainingGimmickCount()
+	{
+		switch(currentGimmickNo)
+		{
+			case 1:
+				return currentUsedGimmick1 < stageData.gimmick1Limit;
+			case 2:
+				return currentUsedGimmick2 < stageData.gimmick2Limit;
+			case 3:
+				return currentUsedGimmick3 < stageData.gimmick3Limit;
+			case 4:
+				return currentUsedGimmick4 < stageData.gimmick4Limit;
+			default:
+				// 例外とかはやらない想定
+				return false;
+		}
+	}
+
+	/// <summary>
 	/// ゴールした女の子
 	/// </summary>
 	public void IncGoalGirlCount()
