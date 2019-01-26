@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216578019961594578}
   - component: {fileID: 1010879291380738803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,10 +52,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 216578019961594578}
     m_Modifications:
-    - target: {fileID: 100000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
-      propertyPath: m_Name
-      value: box
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -99,6 +95,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
+      propertyPath: m_Name
+      value: box
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4d041e7bd00144fbbf1991508f402d, type: 3}
