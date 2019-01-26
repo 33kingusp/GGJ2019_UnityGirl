@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886f9e7001b265d4799595ac4578560c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideMoveSpeed: 3
+  sideMoveSpeed: 2
   fallSpeed: 7
   groundRayDistance: 0.1
   graoundRayOrigin: 0
@@ -192,7 +192,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
