@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerGimmickSetter : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class PlayerGimmickSetter : MonoBehaviour
     public void Update()
     {
         // マウス入力で左クリックをした瞬間
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsUGUIHit(Input.mousePosition))
         {
             SetDummyGimmick();
         }
@@ -86,5 +87,14 @@ public class PlayerGimmickSetter : MonoBehaviour
     private Vector3 GetGridClickPosition()
     {
         return GridManager.GetGridPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f));
+    }
+
+    private static bool IsUGUIHit(Vector3 _scrPos)
+    { // Input.mousePosition
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = _scrPos;
+        List<RaycastResult> result = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, result);
+        return (result.Count > 0);
     }
 }
