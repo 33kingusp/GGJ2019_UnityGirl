@@ -4,15 +4,66 @@ using UnityEngine;
 
 public class PlayerGimmickSetter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField]
+	public GameObject gimmick1Prefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField]
+	public GameObject gimmick2Prefab;
+
+	[SerializeField]
+	public GameObject gimmick3Prefab;
+
+	[SerializeField]
+	public GameObject gimmick4Prefab;
+
+	// 位置座標
+	private Vector3 clickPosition;
+	// スクリーン座標をワールド座標に変換した位置座標
+	private Vector3 screenToWorldPointPosition;
+
+	public void Update()
+	{
+		// マウス入力で左クリックをした瞬間
+		if (Input.GetMouseButtonDown(0)) {
+			SetGimmick();
+		}
+	}
+
+	void SetGimmick()
+	{
+		int currentGimmickNo = StageManager.Instance.currentGimmickNo;
+		if (currentGimmickNo == 0)
+		{
+			// 出さない
+			return;
+		}
+
+
+		// ここでの注意点は座標の引数にVector2を渡すのではなく、Vector3を渡すことである。
+		// Vector3でマウスがクリックした位置座標を取得する
+		clickPosition = Input.mousePosition;
+		// Z軸修正
+		clickPosition.z = 10f;
+
+		GameObject prefab = gimmick1Prefab;
+
+		switch(currentGimmickNo){
+			case 1:
+				prefab = gimmick1Prefab;
+				break;
+			case 2:
+				prefab = gimmick2Prefab;
+				break;
+			case 3:
+				prefab = gimmick3Prefab;
+				break;
+			case 4:
+				prefab = gimmick4Prefab;
+				break;
+		}
+
+		// オブジェクト生成 : オブジェクト(GameObject), 位置(Vector3), 角度(Quaternion)
+		// ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
+		Instantiate(prefab, Camera.main.ScreenToWorldPoint(clickPosition), prefab.transform.rotation);
+	}
 }

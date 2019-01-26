@@ -26,7 +26,6 @@ public class StageManager : MonoBehaviour
 	[SerializeField]
 	GameObject gameOverPanel;
 
-
 	// -------------------------------- 以下デバッグ確認用
 
 	[SerializeField]
@@ -43,13 +42,17 @@ public class StageManager : MonoBehaviour
 
 	// 現在の対策ギミック使用数
 	[SerializeField]
-	public int currentGimmick1;
+	public int currentUsedGimmick1;
 	[SerializeField]
-	public int currentGimmick2;
+	public int currentUsedGimmick2;
 	[SerializeField]
-	public int currentGimmick3;
+	public int currentUsedGimmick3;
 	[SerializeField]
-	public int currentGimmick4;
+	public int currentUsedGimmick4;
+
+	// 現在選択中のギミック
+	[SerializeField]
+	public int currentGimmickNo;
 
 	// ゴールした女の子の数
 	[SerializeField]
@@ -72,10 +75,10 @@ public class StageManager : MonoBehaviour
 		isEnd = false;
 		deletedGirlCount = 0;
 		currentTime = 0;
-		currentGimmick1 = 0;
-		currentGimmick2 = 0;
-		currentGimmick3 = 0;
-		currentGimmick4 = 0;
+		currentUsedGimmick1 = 0;
+		currentUsedGimmick2 = 0;
+		currentUsedGimmick3 = 0;
+		currentUsedGimmick4 = 0;
 		goalGirlCount = 0;
     }
 
@@ -121,23 +124,22 @@ public class StageManager : MonoBehaviour
 	/// <summary>
 	/// 使用されたギミックをインクリメント
 	/// </summary>
-	/// <param name="gimmickNo"></param>
-	public void IncCurrentGimmickCount(int gimmickNo)
+	public void IncCurrentGimmickCount()
 	{
 		// FIXME 定数にしたい
-		switch(gimmickNo)
+		switch(currentGimmickNo)
 		{
 			case 1:
-				currentGimmick1++;
+				currentUsedGimmick1++;
 				break;
 			case 2:
-				currentGimmick2++;
+				currentUsedGimmick2++;
 				break;
 			case 3:
-				currentGimmick3++;
+				currentUsedGimmick3++;
 				break;
 			case 4:
-				currentGimmick4++;
+				currentUsedGimmick4++;
 				break;
 			default:
 				// 例外とかはやらない想定
@@ -178,5 +180,25 @@ public class StageManager : MonoBehaviour
 	{
 		Debug.Log("gameover");
 		gameOverPanel.SetActive(true);
+	}
+
+	public void OnClickGimmick1()
+	{
+		currentGimmickNo = 1;
+	}
+
+	public void OnClickGimmick2()
+	{
+		currentGimmickNo = 2;
+	}
+
+	public void OnClickGimmick3()
+	{
+		currentGimmickNo = 3;
+	}
+
+	public void OnClickGimmick4()
+	{
+		currentGimmickNo = 4;
 	}
 }
