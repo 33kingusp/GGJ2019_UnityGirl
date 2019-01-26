@@ -7,15 +7,18 @@ using UnityEngine;
 /// </summary>
 public class GoalPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	[SerializeField]
+	StageManager stageManager;
+
+ 	void Goal()
+	{
+		stageManager.IncGoalGirlCount();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		Goal();
+		// TODO 幼女消す
+	}
 }
