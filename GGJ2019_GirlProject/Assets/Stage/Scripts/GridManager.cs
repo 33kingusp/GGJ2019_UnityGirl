@@ -21,7 +21,7 @@ public class GridManager
 
         Debug.Log($"現在の座標={position},グリッド座標={gridPos}");
 
-        return Vector3.zero;
+        return gridPos;
     }
 
     //private void Update()
