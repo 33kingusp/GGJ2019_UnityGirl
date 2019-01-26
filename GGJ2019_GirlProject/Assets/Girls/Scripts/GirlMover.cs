@@ -22,13 +22,21 @@ public class GirlMover : MonoBehaviour
     private Rigidbody myRigidbody;
 
     [SerializeField]
-    private float boxCastRayMargine = 0.4f;
+    private float groundRayDistance = 0.4f;
+
+    [SerializeField]
+    private float graoundRayOrigin;
+
+    [SerializeField]
+    private float groundRayBoxSize_Y = 0.05f;
 
     private int slopeLayer = 9;
 
     private int groundLayer = 8;
 
     private int girlLayer = 10;
+
+    private SpriteRenderer spriteRenderer;
 
     private enum MoveState
     {
@@ -41,27 +49,34 @@ public class GirlMover : MonoBehaviour
     {
         currentMoveState = MoveState.RIGHT;
         myRigidbody = GetComponent<Rigidbody>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // 坂の動きをする
-        if (MoveSlope())
+        //// 坂の動きをする
+        //if (MoveSlope())
+        //{
+
+        //}
+        //else
+        //{
+
+        //FallMove();
+
+        var groundObject = JudgeIsGround();
+        // 接地していない場合
+        if (!groundObject)
         {
-            
+            //Rotate(Quaternion.identity);
+            FallMove();
+            Debug.Log("接地していないので落下します");
+            return;
         }
-        else
-        {
-            var groundObject = JudgeIsGround();
-            // 接地していない場合
-            if (!groundObject)
-            {
-                Rotate(Quaternion.identity);
-                FallMove();
-                return;
-            }
-        }
+        //}
+
+        FallMove();
 
         // 壁に衝突したかどうかを取得し、衝突時動作をする
         ReverseSideMove();
@@ -151,18 +166,22 @@ public class GirlMover : MonoBehaviour
         var ray = new Ray(transform.position, -transform.up);
 
         // rayの距離を設定
-        float rayDistance = (transform.lossyScale.y * 0.5f) - boxCastRayMargine;
+        float rayDistance = groundRayDistance;
 
         var rayOrigin = transform.position;
 
-        rayOrigin.y += 0.3f;
+        rayOrigin.y += groundRayDistance;
 
         // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << groundLayer;
+        int layerMask = 1 << groundLayer | 1<< slopeLayer;
 
         RaycastHit hit;
 
-        var isHit = Physics.BoxCast(rayOrigin, (transform.lossyScale) / 2f, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
+        Vector3 boxSize = transform.lossyScale / 2;
+
+        boxSize.y = groundRayBoxSize_Y;
+
+        var isHit = Physics.BoxCast(rayOrigin, boxSize, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
 
         if (isHit)
         {
@@ -189,7 +208,7 @@ public class GirlMover : MonoBehaviour
 
         rayOrigin.y += 0.1f;
 
-        var isHit = Physics.BoxCast(rayOrigin, (transform.lossyScale) *0.5f, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
+        var isHit = Physics.BoxCast(rayOrigin, (transform.lossyScale) * 0.5f, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
 
         if (isHit)
         {
