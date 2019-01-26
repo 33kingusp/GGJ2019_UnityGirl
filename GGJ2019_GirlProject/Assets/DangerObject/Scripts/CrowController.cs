@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CrowController : MonoBehaviour
 {
-    IEnumerator moveEnumerator = null;
+    [SerializeField] private PoleController startPole;
+    private IEnumerator moveEnumerator = null;
     private bool isMoveing;
 
+    private void Start()
+    {
+        startPole.StopCrow(this);
+    }
 
     private void Update()
     {
@@ -26,24 +31,20 @@ public class CrowController : MonoBehaviour
         }
     }
 
-    public void MoveToPole(PoleController pole)
+    public void MoveToPole(PoleController pole, float delay)
     {
-        Move(pole.transform.position + Vector3.up * 4, 5f);
-    }
-
-    private void Move(Vector3 position, float delay)
-    {
-        if(isMoveing)
+        if (isMoveing)
             StopCoroutine(moveEnumerator);
 
-        moveEnumerator = movePositon(position, delay);
+        moveEnumerator = MovePositon(pole, delay);
         StartCoroutine(moveEnumerator);
     }
 
-    private IEnumerator movePositon(Vector3 position, float delay)
+    private IEnumerator MovePositon(PoleController pole, float delay)
     {
         isMoveing = true;
         Vector3 oldPosition = transform.position;
+        Vector3 position = pole.transform.position + Vector3.up * 4;
         float t = 0;
 
         do
@@ -55,6 +56,7 @@ public class CrowController : MonoBehaviour
         while (t <= delay) ;
         transform.position = position;
         isMoveing = false;
+        pole.StopCrow(this);
         yield break;
     }
 }
