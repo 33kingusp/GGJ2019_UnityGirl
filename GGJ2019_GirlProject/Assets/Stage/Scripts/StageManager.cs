@@ -118,7 +118,15 @@ public class StageManager : MonoBehaviour
 		// 時間制限か
 		if(stageData.timeLimit <= currentTime)
 		{
-			isGameOver = true;
+			// 一体でもゴールしてたらクリア
+			if (goalGirlCount > 0)
+			{
+				isClear = true;
+			}
+			else
+			{
+				isGameOver = true;
+			}
 		}
 
 		// 女の子が全て消失したか
@@ -221,9 +229,26 @@ public class StageManager : MonoBehaviour
 		gameOverPanel.SetActive(true);
 	}
 
+	/// <summary>
+	/// ギミックボタンが押された（StageManager側処理）
+	/// </summary>
+	/// <param name="gimmicNo"></param>
     public void OnClickGimmick(int gimmicNo)
     {
         currentGimmickNo = gimmicNo;
     }
+
+	/// <summary>
+	/// 残り時間を取得
+	/// </summary>
+	public int GetRemainigTime()
+	{
+		// マイナスにならないように0で止める
+		if (stageData.timeLimit - currentTime <= 0)
+		{
+			return 0;
+		}
+		return (int)(stageData.timeLimit - currentTime);
+	}
 
 }
