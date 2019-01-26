@@ -151,6 +151,7 @@ public class StageManager : MonoBehaviour
 	{
 		Debug.Log("stage clear");
 		clearPanel.SetActive(true);
+		RecordManager.Instance.SaveRecord(stageData.stageId, stageData.spawnGirls, goalGirlCount, currentTime);
 	}
 
 	/// <summary>
