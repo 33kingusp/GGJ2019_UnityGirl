@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody))]
-public class GirlMover : Mover
+public class Mover : MonoBehaviour
 {
 
     /// <summary>
@@ -17,10 +16,10 @@ public class GirlMover : Mover
     [SerializeField]
     private float fallSpeed = 5f;
 
-    private Mover.MoveDirectionState currentMoveDirectionState = Mover.MoveDirectionState.RIGHT;
+    private MoveDirectionState currentMoveDirectionState = MoveDirectionState.RIGHT;
 
-    public Mover.MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
-    
+    public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
+
 
     private Rigidbody myRigidbody;
 
@@ -46,14 +45,27 @@ public class GirlMover : Mover
     [SerializeField]
     private int sideMoveMaskLayer = girlLayer;
 
-    private Mover.MoveState currentMoveState = Mover.MoveState.AUTO;
+    private MoveState currentMoveState = MoveState.AUTO;
 
-    public Mover.MoveState CurrentMoveState { get => currentMoveState; }
+    public MoveState CurrentMoveState { get => currentMoveState; }
 
     [SerializeField]
     private AudioClip walkAudioClip;
 
     private AudioSource audioSource;
+
+    public enum MoveState
+    {
+        AUTO,
+        FORCE,
+        FEAR
+    }
+
+    public enum MoveDirectionState
+    {
+        RIGHT = 1,
+        LEFT = -1
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -65,9 +77,7 @@ public class GirlMover : Mover
 
     private void Start()
     {
-        ChangeMoveDirectionState(Mover.MoveDirectionState.RIGHT);
-
-       
+        ChangeMoveDirectionState(MoveDirectionState.RIGHT);
     }
 
     // Update is called once per frame
@@ -97,13 +107,13 @@ public class GirlMover : Mover
         if (isRotate) { return; }
         switch (CurrentMoveState)
         {
-            case Mover.MoveState.AUTO:
+            case MoveState.AUTO:
                 SideMove();
                 break;
-            case Mover.MoveState.FORCE:
+            case MoveState.FORCE:
                 SideMove();
                 break;
-            case Mover.MoveState.FEAR:
+            case MoveState.FEAR:
                 SideMove();
                 break;
         }
@@ -150,17 +160,17 @@ public class GirlMover : Mover
     {
         switch (CurrentMoveDirectionState)
         {
-            case Mover.MoveDirectionState.RIGHT:
-                ChangeMoveDirectionState(Mover.MoveDirectionState.LEFT);
+            case MoveDirectionState.RIGHT:
+                ChangeMoveDirectionState(MoveDirectionState.LEFT);
                 break;
 
-            case Mover.MoveDirectionState.LEFT:
-                ChangeMoveDirectionState(Mover.MoveDirectionState.RIGHT);
+            case MoveDirectionState.LEFT:
+                ChangeMoveDirectionState(MoveDirectionState.RIGHT);
                 break;
         }
     }
 
-    private void ChangeMoveDirectionState(Mover.MoveDirectionState moveState)
+    private void ChangeMoveDirectionState(MoveDirectionState moveState)
     {
         isRotate = true;
         currentMoveDirectionState = moveState;
@@ -217,7 +227,7 @@ public class GirlMover : Mover
 
         RaycastHit hit;
 
-        Vector3 boxSize = transform.lossyScale *0.4f;
+        Vector3 boxSize = transform.lossyScale * 0.4f;
 
         boxSize.y = groundRayBoxSize_Y;
 
@@ -264,15 +274,15 @@ public class GirlMover : Mover
         return transform.right * (int)CurrentMoveDirectionState;
     }
 
-    public void ChangeMoveState(Mover.MoveState moveState,float time)
+    public void ChangeMoveState(MoveState moveState, float time)
     {
         StartCoroutine(MoveStateCoroutine(moveState, time));
     }
 
-    private IEnumerator MoveStateCoroutine(Mover.MoveState moveState, float time)
+    private IEnumerator MoveStateCoroutine(MoveState moveState, float time)
     {
         currentMoveState = moveState;
         yield return new WaitForSeconds(time);
-        currentMoveState = Mover.MoveState.AUTO;
+        currentMoveState = MoveState.AUTO;
     }
 }
