@@ -47,9 +47,14 @@ public class GirlMover : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        currentMoveState = MoveState.RIGHT;
+        
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        ChangeMoveState(MoveState.RIGHT);
     }
 
     // Update is called once per frame
@@ -122,6 +127,7 @@ public class GirlMover : MonoBehaviour
     private void ChangeMoveState(MoveState moveState)
     {
         currentMoveState = moveState;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     private void FallMove()
