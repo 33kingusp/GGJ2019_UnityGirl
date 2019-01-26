@@ -80,8 +80,17 @@ public class PlayerGimmickSetter : MonoBehaviour
             yield return null;
         }
         while (!Input.GetMouseButtonUp(0));
-        gimmick.Set();
+
+        if (IsUGUIHit(Input.mousePosition) || !gimmick.Set())
+            Cancel(gimmick);
+
         yield break;
+    }
+
+    private void Cancel(GimmickObjectController gimmick)
+    {
+        Debug.Log("Cancel");
+        Destroy(gimmick.gameObject);
     }
 
     private Vector3 GetGridClickPosition()
@@ -90,7 +99,7 @@ public class PlayerGimmickSetter : MonoBehaviour
     }
 
     private static bool IsUGUIHit(Vector3 _scrPos)
-    { // Input.mousePosition
+    { 
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = _scrPos;
         List<RaycastResult> result = new List<RaycastResult>();
