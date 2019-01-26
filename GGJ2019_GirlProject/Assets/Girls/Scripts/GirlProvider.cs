@@ -15,11 +15,17 @@ public class GirlProvider : MonoBehaviour
 
     private Collider myCollider;
 
+    [SerializeField]
+    private AudioClip deathAudioClip;
+
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Awake()
     {
         girlMover = GetComponent<GirlMover>();
         myCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Death()
@@ -28,6 +34,7 @@ public class GirlProvider : MonoBehaviour
 
         myCollider.enabled = false;
 
+        audioSource.PlayOneShot(deathAudioClip);
         // TODO: アニメーション関連の処理を追加
 
         Destroy(gameObject, deathTimer);

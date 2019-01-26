@@ -50,6 +50,11 @@ public class GirlMover : MonoBehaviour
 
     public MoveState CurrentMoveState { get => currentMoveState; }
 
+    [SerializeField]
+    private AudioClip walkAudioClip;
+
+    private AudioSource audioSource;
+
     public enum MoveState
     {
         AUTO,
@@ -69,11 +74,14 @@ public class GirlMover : MonoBehaviour
 
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         ChangeMoveDirectionState(MoveDirectionState.RIGHT);
+
+       
     }
 
     // Update is called once per frame
@@ -118,6 +126,8 @@ public class GirlMover : MonoBehaviour
 
     private void SideMove()
     {
+        //audioSource.PlayOneShot(walkAudioClip);
+
         var movePos = transform.position;
 
         movePos += GetMoveSideDirection() * sideMoveSpeed * Time.deltaTime;
