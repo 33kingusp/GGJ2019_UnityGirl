@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae68ea83879549c42a06a9a521ca289b, type: 3}
+  m_Name: Scinario1
+  m_EditorClassIdentifier: 
+  memo: "\u30B7\u30CA\u30EA\u30AA1"
+  talkInfoList:
+  - word: "\u3044\u3044\u5929\u6C17\u3060\u306A\u30FC"
+    wordSpeed: 0.05
+    talkSide: 0
+    leftCharacter: {fileID: 22100000, guid: d1bb9047ad24cd147919e59cffeb02c1, type: 2}
+    leftCharacterAnimationSpeed: 2
+    rightCharacter: {fileID: 22100000, guid: 0e08c6e2768e6a5438690939d3f93e3c, type: 2}
+    rightCharacterAnimationSpeed: 0
+  - word: "\u305B\u3084\u306A\u30FC"
+    wordSpeed: 0.1
+    talkSide: 1
+    leftCharacter: {fileID: 22100000, guid: d1bb9047ad24cd147919e59cffeb02c1, type: 2}
+    leftCharacterAnimationSpeed: 0
+    rightCharacter: {fileID: 22100000, guid: 0e08c6e2768e6a5438690939d3f93e3c, type: 2}
+    rightCharacterAnimationSpeed: 0.5
+  - word: "\u558B\u3089\u305B\u308B\u3053\u3068\u306A\u3044\u306A\u3041"
+    wordSpeed: 0.05
+    talkSide: 0
+    leftCharacter: {fileID: 22100000, guid: d1bb9047ad24cd147919e59cffeb02c1, type: 2}
+    leftCharacterAnimationSpeed: 1
+    rightCharacter: {fileID: 22100000, guid: 0e08c6e2768e6a5438690939d3f93e3c, type: 2}
+    rightCharacterAnimationSpeed: 0
+  - word: "\u305D\u308C\u306A\u30FC"
+    wordSpeed: 0.05
+    talkSide: 1
+    leftCharacter: {fileID: 22100000, guid: d1bb9047ad24cd147919e59cffeb02c1, type: 2}
+    leftCharacterAnimationSpeed: 0
+    rightCharacter: {fileID: 22100000, guid: 0e08c6e2768e6a5438690939d3f93e3c, type: 2}
+    rightCharacterAnimationSpeed: 0.6
