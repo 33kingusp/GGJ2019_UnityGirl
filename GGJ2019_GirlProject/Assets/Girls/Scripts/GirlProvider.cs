@@ -25,5 +25,10 @@ public class GirlProvider : MonoBehaviour
     {
         girlMover.ReverseSideMove();
     }
+
+    public GirlMover.MoveState GetGirlMoveState()
+    {
+        return girlMover.CurrentMoveState;
+    } 
     
 }

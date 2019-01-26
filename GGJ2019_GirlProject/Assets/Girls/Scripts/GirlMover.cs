@@ -19,6 +19,8 @@ public class GirlMover : MonoBehaviour
 
     private MoveState currentMoveState = MoveState.RIGHT;
 
+    public MoveState CurrentMoveState { get => currentMoveState; }
+
     private Rigidbody myRigidbody;
 
     [SerializeField]
@@ -40,7 +42,9 @@ public class GirlMover : MonoBehaviour
 
     private bool isRotate = false;
 
-    private enum MoveState
+    
+
+    public enum MoveState
     {
         RIGHT = 1,
         LEFT = -1
@@ -132,7 +136,7 @@ public class GirlMover : MonoBehaviour
 
     public void ReverseSideMove()
     {
-        switch (currentMoveState)
+        switch (CurrentMoveState)
         {
             case MoveState.RIGHT:
                 ChangeMoveState(MoveState.LEFT);
@@ -249,6 +253,6 @@ public class GirlMover : MonoBehaviour
 
     private Vector3 GetMoveSideDirection()
     {
-        return transform.right * (int)currentMoveState;
+        return transform.right * (int)CurrentMoveState;
     }
 }
