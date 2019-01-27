@@ -5713,6 +5713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathHole
       objectReference: {fileID: 0}
+    - target: {fileID: 1691692792461695517, guid: 1f87aea260319494983a09e31c3d4f01,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 216578019961594578, guid: 1f87aea260319494983a09e31c3d4f01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5768,10 +5773,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1010879291380738803, guid: 1f87aea260319494983a09e31c3d4f01,
+    - target: {fileID: 7672533881862332579, guid: 1f87aea260319494983a09e31c3d4f01,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f87aea260319494983a09e31c3d4f01, type: 3}
@@ -5781,24 +5786,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1811497614}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1811497616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1691692792461695517, guid: 1f87aea260319494983a09e31c3d4f01,
-    type: 3}
-  m_PrefabInstance: {fileID: 1811497614}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1811497617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811497616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e394a8236243646409761f22ea57bb07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1868772576
 MonoBehaviour:
   m_ObjectHideFlags: 0
