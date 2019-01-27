@@ -227,7 +227,7 @@ public class GirlMover : Mover
 
         RaycastHit hit;
 
-        Vector3 boxSize = transform.lossyScale *0.3f;
+        Vector3 boxSize = transform.lossyScale *0.4f;
 
         boxSize.y = groundRayBoxSize_Y;
 
