@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7539648045251119061}
   - component: {fileID: 7539648045251117098}
   - component: {fileID: 7539648045251117096}
-  - component: {fileID: 1297038333}
   - component: {fileID: 7251783461228665463}
   - component: {fileID: 7582059084580707253}
   m_Layer: 10
@@ -65,6 +64,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sideMoveSpeed: 2
+  fallSpeed: 7
+  groundRayDistance: 0.1
+  graoundRayOrigin: 0
+  groundRayBoxSize_Y: 0.05
+  sideMoveMaskLayer: 10
+  walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
+  sideMoveSpeed: 3
   fallSpeed: 7
   groundRayDistance: 0.1
   graoundRayOrigin: 0
@@ -148,19 +154,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1297038333
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7539648045251119060}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.908, y: 1.008, z: 0.2}
-  m_Center: {x: 0, y: 0.504, z: 0}
 --- !u!95 &7251783461228665463
 Animator:
   serializedVersion: 3

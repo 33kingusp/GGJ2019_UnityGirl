@@ -23,19 +23,35 @@ public class StageData : ScriptableObject
 
 	[SerializeField]
 	[Tooltip("タイムリミット")]
-	public int timeLimit;
+	public float timeLimit;
+
+	[SerializeField]
+	[Tooltip("ギミック1のprefab")]
+	public GameObject gimmick1Object;
 
 	[SerializeField]
 	[Tooltip("ギミック1の制限数")]
 	public int gimmick1Limit;
 
 	[SerializeField]
+	[Tooltip("ギミック2のprefab")]
+	public GameObject gimmick2Object;
+
+	[SerializeField]
 	[Tooltip("ギミック2の制限数")]
 	public int gimmick2Limit;
 
 	[SerializeField]
+	[Tooltip("ギミック3のprefab")]
+	public GameObject gimmick3Object;
+
+	[SerializeField]
 	[Tooltip("ギミック3の制限数")]
 	public int gimmick3Limit;
+
+	[SerializeField]
+	[Tooltip("ギミック4のprefab")]
+	public GameObject gimmick4Object;
 
 	[SerializeField]
 	[Tooltip("ギミック4の制限数")]

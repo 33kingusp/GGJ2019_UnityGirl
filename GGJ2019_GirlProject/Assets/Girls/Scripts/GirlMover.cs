@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[RequireComponent(typeof(Rigidbody))]
-public class GirlMover : MonoBehaviour
+public class GirlMover : Mover
 {
 
     /// <summary>
@@ -17,9 +17,9 @@ public class GirlMover : MonoBehaviour
     [SerializeField]
     private float fallSpeed = 5f;
 
-    private MoveDirectionState currentMoveDirectionState = MoveDirectionState.RIGHT;
+    private Mover.MoveDirectionState currentMoveDirectionState = Mover.MoveDirectionState.RIGHT;
 
-    public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
+    public Mover.MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
     
 
     private Rigidbody myRigidbody;
@@ -46,32 +46,18 @@ public class GirlMover : MonoBehaviour
     [SerializeField]
     private int sideMoveMaskLayer = girlLayer;
 
-    private MoveState currentMoveState = MoveState.AUTO;
+    private Mover.MoveState currentMoveState = Mover.MoveState.AUTO;
 
-    public MoveState CurrentMoveState { get => currentMoveState; }
+    public Mover.MoveState CurrentMoveState { get => currentMoveState; }
 
     [SerializeField]
     private AudioClip walkAudioClip;
 
     private AudioSource audioSource;
 
-    public enum MoveState
-    {
-        AUTO,
-        FORCE,
-        FEAR
-    }
-
-    public enum MoveDirectionState
-    {
-        RIGHT = 1,
-        LEFT = -1
-    }
-
     // Start is called before the first frame update
     void Awake()
     {
-
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -79,7 +65,7 @@ public class GirlMover : MonoBehaviour
 
     private void Start()
     {
-        ChangeMoveDirectionState(MoveDirectionState.RIGHT);
+        ChangeMoveDirectionState(Mover.MoveDirectionState.RIGHT);
 
        
     }
@@ -111,13 +97,13 @@ public class GirlMover : MonoBehaviour
         if (isRotate) { return; }
         switch (CurrentMoveState)
         {
-            case MoveState.AUTO:
+            case Mover.MoveState.AUTO:
                 SideMove();
                 break;
-            case MoveState.FORCE:
+            case Mover.MoveState.FORCE:
                 SideMove();
                 break;
-            case MoveState.FEAR:
+            case Mover.MoveState.FEAR:
                 SideMove();
                 break;
         }
@@ -164,17 +150,17 @@ public class GirlMover : MonoBehaviour
     {
         switch (CurrentMoveDirectionState)
         {
-            case MoveDirectionState.RIGHT:
-                ChangeMoveDirectionState(MoveDirectionState.LEFT);
+            case Mover.MoveDirectionState.RIGHT:
+                ChangeMoveDirectionState(Mover.MoveDirectionState.LEFT);
                 break;
 
-            case MoveDirectionState.LEFT:
-                ChangeMoveDirectionState(MoveDirectionState.RIGHT);
+            case Mover.MoveDirectionState.LEFT:
+                ChangeMoveDirectionState(Mover.MoveDirectionState.RIGHT);
                 break;
         }
     }
 
-    private void ChangeMoveDirectionState(MoveDirectionState moveState)
+    private void ChangeMoveDirectionState(Mover.MoveDirectionState moveState)
     {
         isRotate = true;
         currentMoveDirectionState = moveState;
@@ -278,15 +264,15 @@ public class GirlMover : MonoBehaviour
         return transform.right * (int)CurrentMoveDirectionState;
     }
 
-    public void ChangeMoveState(MoveState moveState,float time)
+    public void ChangeMoveState(Mover.MoveState moveState,float time)
     {
         StartCoroutine(MoveStateCoroutine(moveState, time));
     }
 
-    private IEnumerator MoveStateCoroutine(MoveState moveState, float time)
+    private IEnumerator MoveStateCoroutine(Mover.MoveState moveState, float time)
     {
         currentMoveState = moveState;
         yield return new WaitForSeconds(time);
-        currentMoveState = MoveState.AUTO;
+        currentMoveState = Mover.MoveState.AUTO;
     }
 }
