@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTimer: 0.75
   deathAudioClip: {fileID: 8300000, guid: 6aea7bdc4e47c8547936da180ce56bc8, type: 3}
+  goalAudioClip: {fileID: 8300000, guid: 50991ac3cff033c488e3f7a395fc725f, type: 3}
 --- !u!54 &1047345183
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: abb7f237ab15d224480e02cff22c50f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1eb10fb9957d8d4687a8d70139c7297, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
