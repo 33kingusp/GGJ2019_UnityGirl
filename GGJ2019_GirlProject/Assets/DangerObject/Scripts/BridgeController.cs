@@ -9,7 +9,7 @@ public class BridgeController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         Debug.Log("Exit" + collision);
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Girl") || collision.gameObject.layer == LayerMask.NameToLayer("Girl"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Girl") || collision.gameObject.layer == LayerMask.NameToLayer("BadBoy"))
         {
             breakLimit--;
             if (breakLimit <= 0) Break();
