@@ -19,7 +19,7 @@ MonoBehaviour:
   timeLimit: 20
   gimmick1Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
     type: 3}
-  gimmick1Limit: 2
+  gimmick1Limit: 1
   gimmick2Object: {fileID: 3986458964458442122, guid: 96152e8aff1830a4db82e66cf156931f,
     type: 3}
   gimmick2Limit: 2
