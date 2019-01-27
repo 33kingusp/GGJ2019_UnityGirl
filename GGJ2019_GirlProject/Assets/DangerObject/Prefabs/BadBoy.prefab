@@ -164,5 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77693e135781494eb21d39edd2e4f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTimer: 1
+  deathTimer: 0.1
   deathAudioClip: {fileID: 0}

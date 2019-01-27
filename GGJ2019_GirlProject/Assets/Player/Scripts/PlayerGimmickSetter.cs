@@ -22,6 +22,14 @@ public class PlayerGimmickSetter : MonoBehaviour
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0) && !IsUGUIHit(Input.mousePosition))
         {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && hit.collider)
+            {
+                DangerObjectController danger = hit.collider.GetComponent<DangerObjectController>();
+                if (danger.GetType().Equals(typeof(PoleController))) (danger as PoleController).MoveCrow();
+                return;
+            }
+            
             SetDummyGimmick();
         }
     }
