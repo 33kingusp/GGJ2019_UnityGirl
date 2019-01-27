@@ -74,6 +74,13 @@ public class GirlMover : Mover
     void FixedUpdate()
     {
 
+        //var isSlope = JudgeIsSlope();
+
+        //if (isSlope)
+        //{
+        //    MoveSlope();
+        //}
+
         var groundObject = JudgeIsGround();
         // 接地していない場合
         if (!groundObject)
@@ -217,7 +224,7 @@ public class GirlMover : Mover
 
         RaycastHit hit;
 
-        Vector3 boxSize = transform.lossyScale *0.4f;
+        Vector3 boxSize = transform.lossyScale *0.3f;
 
         boxSize.y = groundRayBoxSize_Y;
 

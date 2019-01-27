@@ -63,16 +63,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886f9e7001b265d4799595ac4578560c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideMoveSpeed: 2
+  sideMoveSpeed: 3
   fallSpeed: 7
-  groundRayDistance: 0.1
+  groundRayDistance: 0.15
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
   sideMoveMaskLayer: 10
   walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
   sideMoveSpeed: 3
   fallSpeed: 7
-  groundRayDistance: 0.1
+  groundRayDistance: 0.2
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
   sideMoveMaskLayer: 10

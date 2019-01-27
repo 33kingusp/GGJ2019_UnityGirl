@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6578678243056157814}
   - component: {fileID: 141881010591633652}
   m_Layer: 10
-  m_Name: Girl3 1
+  m_Name: Girl4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,14 +65,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sideMoveSpeed: 3
   fallSpeed: 7
-  groundRayDistance: 0.1
+  groundRayDistance: 0.15
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
   sideMoveMaskLayer: 10
   walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
   sideMoveSpeed: 3
   fallSpeed: 7
-  groundRayDistance: 0.1
+  groundRayDistance: 0.2
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
   sideMoveMaskLayer: 10

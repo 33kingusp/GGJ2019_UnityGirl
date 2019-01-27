@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageId: 0
   memo: 
-  spawnGirls: 0
-  spawnGirlsIntervalTime: 0
-  timeLimit: 0
-  gimmick1Object: {fileID: 0}
-  gimmick1Limit: 0
-  gimmick2Object: {fileID: 0}
-  gimmick2Limit: 0
+  spawnGirls: 5
+  spawnGirlsIntervalTime: 0.6
+  timeLimit: 20
+  gimmick1Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
+    type: 3}
+  gimmick1Limit: 2
+  gimmick2Object: {fileID: 3986458964458442122, guid: 96152e8aff1830a4db82e66cf156931f,
+    type: 3}
+  gimmick2Limit: 2
   gimmick3Object: {fileID: 0}
   gimmick3Limit: 0
   gimmick4Object: {fileID: 0}
