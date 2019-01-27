@@ -22,7 +22,7 @@ public class GoalPoint : MonoBehaviour
 		if (gameObject.layer == 10)
 		{
 			var girlProvider = gameObject.GetComponent<GirlProvider>();
-			girlProvider.Death();
+			girlProvider.Goal();
 			Goal();
 		}
 	}

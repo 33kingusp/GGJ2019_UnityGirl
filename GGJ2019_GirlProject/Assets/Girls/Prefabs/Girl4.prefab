@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTimer: 0.75
   deathAudioClip: {fileID: 8300000, guid: 6aea7bdc4e47c8547936da180ce56bc8, type: 3}
+  goalAudioClip: {fileID: 8300000, guid: 50991ac3cff033c488e3f7a395fc725f, type: 3}
 --- !u!54 &5829441750821380272
 Rigidbody:
   m_ObjectHideFlags: 0

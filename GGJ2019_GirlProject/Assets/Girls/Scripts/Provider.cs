@@ -14,6 +14,9 @@ public class Provider : MonoBehaviour
     [SerializeField]
     private AudioClip deathAudioClip;
 
+    [SerializeField]
+    private AudioClip goalAudioClip;
+
     private AudioSource audioSource;
 
     private Animator animator;
@@ -41,6 +44,17 @@ public class Provider : MonoBehaviour
 
         Destroy(gameObject, deathTimer);
     }
+
+	public void Goal()
+	{
+        mover.enabled = false;
+
+        myCollider.enabled = false;
+
+        audioSource.PlayOneShot(goalAudioClip);
+
+        Destroy(gameObject, deathTimer);
+	}
 
     public void ReverseMoveDirection()
     {
