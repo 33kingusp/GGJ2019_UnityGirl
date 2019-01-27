@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 515021758}
   - component: {fileID: 2241125438395352012}
   - component: {fileID: 515021760}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: DeathHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515021759}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 5568825706794397951}
   - component: {fileID: 2636536567987913857}
   - component: {fileID: 3058571720199957439}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
