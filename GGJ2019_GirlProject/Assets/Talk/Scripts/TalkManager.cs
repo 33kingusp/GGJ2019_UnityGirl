@@ -146,9 +146,6 @@ public class TalkManager : MonoBehaviour
 	{
 		switch (scene)
 		{
-			case "TalkTutorial":
-				SceneManager.LoadScene("ReleaseScenes/TalkStage1");
-				break;
 			case "TalkStage1":
 				SceneManager.LoadScene("ReleaseScenes/Stage1");
 				break;
@@ -158,6 +155,7 @@ public class TalkManager : MonoBehaviour
 			case "TalkStage3":
 				SceneManager.LoadScene("ReleaseScenes/Stage3");
 				break;
+			case "TalkTutorial":
 			case "Ending":
 				SceneManager.LoadScene("ReleaseScenes/Title");
 				break;
