@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4748036530562744869}
   - component: {fileID: 247964893130616768}
   - component: {fileID: 3574986917226230647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5643966638067381360}
   - component: {fileID: 5643966638067381361}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

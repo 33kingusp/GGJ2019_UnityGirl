@@ -8,14 +8,9 @@ public class PoleController : DangerObjectController
     [SerializeField] private CrowController crow;
     private bool isStopedCrow;
 
-    private void Update()
-    {
-        if (isStopedCrow && Input.GetMouseButtonDown(0))
-            MoveCrow();
-    }
-
     public void MoveCrow()
     {
+        if (!isStopedCrow) return;
         isStopedCrow = false;
         crow.MoveToPole(nextPole, 3f);
     }
