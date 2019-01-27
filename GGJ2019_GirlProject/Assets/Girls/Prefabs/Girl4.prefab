@@ -72,7 +72,7 @@ MonoBehaviour:
   walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
   sideMoveSpeed: 3
   fallSpeed: 7
-  groundRayDistance: 0.2
+  groundRayDistance: 0.15
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
   sideMoveMaskLayer: 10
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 56f7935b1fc09f548969a2e67bc7c271, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

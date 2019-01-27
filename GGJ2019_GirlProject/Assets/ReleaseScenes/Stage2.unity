@@ -880,6 +880,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BadBoy
       objectReference: {fileID: 0}
+    - target: {fileID: 4125928760040469133, guid: 0fe8f0fad6010144a800777422298852,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4125928760040469134, guid: 0fe8f0fad6010144a800777422298852,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5846,12 +5851,12 @@ PrefabInstance:
     - target: {fileID: 8324340315387715972, guid: 3b44a90803c8fc84285a4292da1ae870,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 8.42
       objectReference: {fileID: 0}
     - target: {fileID: 8324340315387715972, guid: 3b44a90803c8fc84285a4292da1ae870,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7
+      value: 4.92
       objectReference: {fileID: 0}
     - target: {fileID: 8324340315387715972, guid: 3b44a90803c8fc84285a4292da1ae870,
         type: 3}
@@ -5920,7 +5925,7 @@ PrefabInstance:
     - target: {fileID: 8529815721789504979, guid: 227925c5aaf34ff40a5fcf5f3632e8d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.38
+      value: -2.97
       objectReference: {fileID: 0}
     - target: {fileID: 8529815721789504979, guid: 227925c5aaf34ff40a5fcf5f3632e8d9,
         type: 3}
