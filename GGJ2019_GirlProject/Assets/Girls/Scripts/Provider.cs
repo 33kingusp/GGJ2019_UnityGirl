@@ -52,10 +52,18 @@ public class Provider : MonoBehaviour
         return mover.CurrentMoveDirectionState;
     }
 
+    public void SetMoveDirectioState(Mover.MoveDirectionState state)
+    {
+        if(mover.CurrentMoveDirectionState != state)
+            mover.ReverseSideMove();
+    }
+
     public Mover.MoveState GetGirlMoveState()
     {
         return mover.CurrentMoveState;
     }
+
+
 
     public void Fear(float time)
     {

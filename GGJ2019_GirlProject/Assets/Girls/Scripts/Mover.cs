@@ -21,7 +21,7 @@ public class Mover : MonoBehaviour
     public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
 
 
-    private Rigidbody myRigidbody;
+    protected Rigidbody myRigidbody;
 
     [SerializeField]
     private float groundRayDistance = 0.4f;
@@ -38,7 +38,7 @@ public class Mover : MonoBehaviour
 
     private const int girlLayer = 10;
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     private bool isRotate = false;
 
@@ -47,12 +47,12 @@ public class Mover : MonoBehaviour
 
     private MoveState currentMoveState = MoveState.AUTO;
 
-    public MoveState CurrentMoveState { get => currentMoveState; }
+    public MoveState CurrentMoveState { get => currentMoveState; set => currentMoveState = value; }
 
     [SerializeField]
     private AudioClip walkAudioClip;
 
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
     public enum MoveState
     {
@@ -68,20 +68,20 @@ public class Mover : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         ChangeMoveDirectionState(MoveDirectionState.RIGHT);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
 
         var groundObject = JudgeIsGround();

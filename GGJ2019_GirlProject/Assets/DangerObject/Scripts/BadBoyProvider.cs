@@ -7,6 +7,6 @@ public class BadBoyProvider : Provider
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Girl"))
-            DengerObjectManager.KillGirl(collision.gameObject.GetComponent<GirlProvider>());
+            DangerObjectManager.KillGirl(collision.gameObject.GetComponent<GirlProvider>());
     }
 }

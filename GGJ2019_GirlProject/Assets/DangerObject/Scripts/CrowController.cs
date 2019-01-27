@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class CrowController : MonoBehaviour
 {
-    [SerializeField] Animator animator;
     [SerializeField] private PoleController startPole;
+    private Animator animator;
     private IEnumerator moveEnumerator = null;
     private bool isMoveing;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Start()
     {
+        transform.position = startPole.transform.position + Vector3.up * 1.4f;
         startPole.StopCrow(this);
     }
 
@@ -22,13 +28,11 @@ public class CrowController : MonoBehaviour
     private void FindGirl()
     {
         RaycastHit hit = new RaycastHit();
-        if (Physics.SphereCast(transform.position, 1.0f, Vector3.down, out hit))
+        if (Physics.SphereCast(transform.position + Vector3.up, 1.0f, Vector3.down * 5f,  out hit))
         {
-            GirlProvider girl = hit.collider.GetComponent<GirlProvider>();
-            if (girl)
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Girl"))
             {
-                // != girl.GetGirlMoveState();
-                girl.ReverseMoveDirection();
+               DangerObjectManager.FearMover(hit.collider.gameObject, gameObject);
             }
         }
     }
@@ -47,7 +51,7 @@ public class CrowController : MonoBehaviour
         isMoveing = true;
         animator.SetBool("isFrying", true);
         Vector3 oldPosition = transform.position;
-        Vector3 position = pole.transform.position + Vector3.up * 4;
+        Vector3 position = pole.transform.position + Vector3.up * 1.4f;
 
         if (position.x - oldPosition.x <= 0) transform.eulerAngles = Vector3.zero;
         else transform.eulerAngles = Vector3.up * 180;
@@ -56,6 +60,7 @@ public class CrowController : MonoBehaviour
 
         do
         {
+            FindGirl();
             transform.position = Vector3.Lerp(oldPosition, position, t / delay);
             t += Time.deltaTime;
             yield return null;
@@ -66,5 +71,13 @@ public class CrowController : MonoBehaviour
         animator.SetBool("isFrying", false);
         pole.StopCrow(this);
         yield break;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Girl"))
+        {
+            DangerObjectManager.FearMover(other.gameObject, gameObject);
+        }
     }
 }

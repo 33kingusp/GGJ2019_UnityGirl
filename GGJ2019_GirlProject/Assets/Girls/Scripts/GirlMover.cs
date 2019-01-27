@@ -56,21 +56,24 @@ public class GirlMover : Mover
     private AudioSource audioSource;
 
     // Start is called before the first frame update
+    /*
     void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
-
+*/
+    /*
     private void Start()
     {
         ChangeMoveDirectionState(Mover.MoveDirectionState.RIGHT);
 
        
     }
-
+    */
     // Update is called once per frame
+   /*
     void FixedUpdate()
     {
 
@@ -116,7 +119,7 @@ public class GirlMover : Mover
         }
 
     }
-
+    */
     private void SideMove()
     {
         //audioSource.PlayOneShot(walkAudioClip);
