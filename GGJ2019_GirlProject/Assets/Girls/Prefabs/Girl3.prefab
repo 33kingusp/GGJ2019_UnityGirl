@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 741403290}
   - component: {fileID: 741403289}
-  - component: {fileID: 741403288}
   - component: {fileID: 741403287}
   - component: {fileID: 741403286}
   - component: {fileID: 741403285}
   - component: {fileID: 741403284}
   - component: {fileID: 741403283}
+  - component: {fileID: 4636604034102183997}
   m_Layer: 10
   m_Name: Girl3
   m_TagString: Untagged
@@ -51,32 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTimer: 0.75
   deathAudioClip: {fileID: 8300000, guid: 6aea7bdc4e47c8547936da180ce56bc8, type: 3}
---- !u!114 &741403288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741403282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886f9e7001b265d4799595ac4578560c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sideMoveSpeed: 3
-  fallSpeed: 7
-  groundRayDistance: 0.15
-  graoundRayOrigin: 0
-  groundRayBoxSize_Y: 0.05
-  sideMoveMaskLayer: 10
-  walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
-  sideMoveSpeed: 3
-  fallSpeed: 7
-  groundRayDistance: 0.15
-  graoundRayOrigin: 0
-  groundRayBoxSize_Y: 0.05
-  sideMoveMaskLayer: 10
-  walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
 --- !u!54 &741403287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -269,3 +243,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4636604034102183997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741403282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8e0fd3872cef342b1609b4bf11a4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sideMoveSpeed: 2
+  fallSpeed: 5
+  groundRayDistance: 0.4
+  graoundRayOrigin: 0
+  groundRayBoxSize_Y: 0.05
+  sideMoveMaskLayer: 10
+  walkAudioClip: {fileID: 8300000, guid: 35393aef933c17943a60fda8849856de, type: 3}
