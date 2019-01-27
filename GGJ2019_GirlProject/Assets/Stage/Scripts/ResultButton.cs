@@ -26,4 +26,20 @@ public class ResultButton : MonoBehaviour
 	{
         SceneManager.LoadScene("ReleaseScenes/Stage3");
 	}
+
+
+	public void StartTalkStage2()
+	{
+        SceneManager.LoadScene("ReleaseScenes/TalkStage2");
+	}
+
+	public void StartTalkStage3()
+	{
+        SceneManager.LoadScene("ReleaseScenes/TalkStage3");
+	}
+
+	public void StartEnding()
+	{
+        SceneManager.LoadScene("ReleaseScenes/Ending");
+	}
 }

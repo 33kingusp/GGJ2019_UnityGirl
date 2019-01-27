@@ -16,12 +16,16 @@ public class Provider : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     protected virtual void Awake()
     {
         mover = GetComponent<Mover>();
         myCollider = GetComponent<Collider>();
         audioSource = GetComponent<AudioSource>();
+
+        animator = GetComponent<Animator>();
     }
 
     public void Death()
@@ -31,7 +35,9 @@ public class Provider : MonoBehaviour
         myCollider.enabled = false;
 
         audioSource.PlayOneShot(deathAudioClip);
-        // TODO: アニメーション関連の処理を追加
+
+        // 死亡アニメーションを再生
+        animator.SetBool("IsDeath",true);
 
         Destroy(gameObject, deathTimer);
     }
@@ -46,10 +52,18 @@ public class Provider : MonoBehaviour
         return mover.CurrentMoveDirectionState;
     }
 
+    public void SetMoveDirectioState(Mover.MoveDirectionState state)
+    {
+        if(mover.CurrentMoveDirectionState != state)
+            mover.ReverseSideMove();
+    }
+
     public Mover.MoveState GetGirlMoveState()
     {
         return mover.CurrentMoveState;
     }
+
+
 
     public void Fear(float time)
     {

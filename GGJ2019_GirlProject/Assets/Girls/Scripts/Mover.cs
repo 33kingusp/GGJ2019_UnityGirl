@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
+
     /// <summary>
     /// 現在坂の上かどうか
     /// </summary>
@@ -12,14 +13,15 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private float sideMoveSpeed = 5f;
 
-    [SerializeField] private float fallSpeed = 5f;
-    [SerializeField] private float groundFallSpped = 0.3f;
+    [SerializeField]
+    private float fallSpeed = 5f;
 
     private MoveDirectionState currentMoveDirectionState = MoveDirectionState.RIGHT;
 
     public MoveDirectionState CurrentMoveDirectionState { get => currentMoveDirectionState; }
 
-    private Rigidbody myRigidbody;
+
+    protected Rigidbody myRigidbody;
 
     [SerializeField]
     private float groundRayDistance = 0.4f;
@@ -30,18 +32,27 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private float groundRayBoxSize_Y = 0.05f;
 
-    private SpriteRenderer spriteRenderer;
+    private int slopeLayer = 9;
+
+    private int groundLayer = 8;
+
+    private const int girlLayer = 10;
+
+    protected SpriteRenderer spriteRenderer;
 
     private bool isRotate = false;
 
+    [SerializeField]
+    private int sideMoveMaskLayer = girlLayer;
+
     private MoveState currentMoveState = MoveState.AUTO;
 
-    public MoveState CurrentMoveState { get => currentMoveState; }
+    public MoveState CurrentMoveState { get => currentMoveState; set => currentMoveState = value; }
 
     [SerializeField]
     private AudioClip walkAudioClip;
 
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
     public enum MoveState
     {
@@ -57,79 +68,73 @@ public class Mover : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         ChangeMoveDirectionState(MoveDirectionState.RIGHT);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        Vector3 movement = new Vector3();
-
-        GetGroundHorizontal();
 
         var groundObject = JudgeIsGround();
         // 接地していない場合
-        //if (!groundObject)
-        //{
-        Debug.Log(IsGround());
-        movement = FallMove(movement);
-        //  return;
-        //}
+        if (!groundObject)
+        {
+            FallMove();
+            return;
+        }
+
         // 壁に衝突したかどうかを取得し、衝突時動作をする
-        if (IsGround() && JudgeReverseSide(gameObject.layer))
+        if (JudgeReverseSide(sideMoveMaskLayer))
         {
             if (!isRotate)
             {
                 ReverseSideMove();
-                //return;
+                return;
             }
+
         }
+
         // 回転中は移動しない
-//        if (isRotate) { return; }
-        if (IsGround() && !isRotate)
-            switch (CurrentMoveState)
-            {
-                case MoveState.AUTO:
-                    movement = SideMove(movement);
-                    break;
-                case MoveState.FORCE:
-                    movement = SideMove(movement);
-                    break;
-                case MoveState.FEAR:
-                    movement = SideMove(movement);
-                    break;
-            }
-        // myRigidbody.MovePosition(transform.position + movement * Time.fixedDeltaTime);
-        transform.position = transform.position + movement * Time.fixedDeltaTime;
+        if (isRotate) { return; }
+        switch (CurrentMoveState)
+        {
+            case MoveState.AUTO:
+                SideMove();
+                break;
+            case MoveState.FORCE:
+                SideMove();
+                break;
+            case MoveState.FEAR:
+                SideMove();
+                break;
+        }
+
     }
 
-    private Vector3 SideMove(Vector3 movement)
+    private void SideMove()
     {
         //audioSource.PlayOneShot(walkAudioClip);
 
-        //var movePos = transform.position;
+        var movePos = transform.position;
 
-        //movePos += GetMoveSideDirection() * sideMoveSpeed * Time.deltaTime;
+        movePos += GetMoveSideDirection() * sideMoveSpeed * Time.deltaTime;
 
-        //myRigidbody.MovePosition(movePos);
-
-        movement += GetMoveSideDirection() * sideMoveSpeed;
-        return movement;
+        myRigidbody.MovePosition(movePos);
     }
 
     private bool JudgeReverseSide()
     {
 
-        return JudgeReverseSide(gameObject.layer);
+        return JudgeReverseSide(girlLayer);
     }
 
     private bool JudgeReverseSide(int maskLayer)
@@ -142,7 +147,7 @@ public class Mover : MonoBehaviour
         var ray = new Ray(rayOrigin, GetMoveSideDirection());
 
         // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << LayerMask.NameToLayer("Ground") | 1 << maskLayer;
+        int layerMask = 1 << groundLayer | 1 << maskLayer;
 
         float rayDistance = (transform.lossyScale.x / 2) + 0.02f;
 
@@ -173,20 +178,13 @@ public class Mover : MonoBehaviour
         isRotate = false;
     }
 
-    private Vector3 FallMove(Vector3 movement)
+    private void FallMove()
     {
-        // var movePos = transform.position;
-        // movePos.y -= fallSpeed * Time.fixedDeltaTime;
-        // myRigidbody.MovePosition(movePos);
-        if (IsGround())
-        {
-            movement.y = -groundFallSpped;
-        }
-        else
-        {
-            movement.y = -fallSpeed;
-        }
-        return movement;
+        var movePos = transform.position;
+
+        movePos.y -= fallSpeed * Time.fixedDeltaTime;
+
+        myRigidbody.MovePosition(movePos);
     }
 
     private void Rotate(Quaternion rotation)
@@ -212,29 +210,20 @@ public class Mover : MonoBehaviour
         return isSlope;
     }
 
-    private bool IsGround()
-    {
-        return (JudgeIsGround() != null &&  JudgeIsGround().layer == LayerMask.NameToLayer("Ground"));
-    }
-
     private GameObject JudgeIsGround()
     {
         // 自分の下の方にrayを飛ばす
-     
-
-        var ray = new Ray(transform.position + transform.up * 0.5f , -transform.up);
+        var ray = new Ray(transform.position, -transform.up);
 
         // rayの距離を設定
-        float rayDistance = groundRayDistance + 0.5f;
+        float rayDistance = groundRayDistance;
 
         var rayOrigin = transform.position;
 
         rayOrigin.y += groundRayDistance;
 
-        Debug.DrawRay(transform.position, -transform.up * groundRayDistance, Color.red, 2f);
-
         // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Slope");
+        int layerMask = 1 << groundLayer | 1 << slopeLayer;
 
         RaycastHit hit;
 
@@ -242,10 +231,9 @@ public class Mover : MonoBehaviour
 
         boxSize.y = groundRayBoxSize_Y;
 
-        //var isHit = Physics.BoxCast(rayOrigin, boxSize, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
-        var isHit = Physics.SphereCast(rayOrigin, 0.8f, -transform.up, out hit, rayDistance * 0.5f, layerMask);
+        var isHit = Physics.BoxCast(rayOrigin, boxSize, -transform.up, out hit, transform.rotation, rayDistance, layerMask);
 
-        if (isHit && hit.distance <= 0.2f)
+        if (isHit)
         {
             return hit.collider.gameObject;
         }
@@ -266,7 +254,7 @@ public class Mover : MonoBehaviour
         var rayOrigin = transform.position;
 
         // 坂のみ衝突判定を取る
-        int layerMask = 1 << LayerMask.NameToLayer("Slope");
+        int layerMask = 1 << slopeLayer;
 
         rayOrigin.y += 0.1f;
 
@@ -296,32 +284,5 @@ public class Mover : MonoBehaviour
         currentMoveState = moveState;
         yield return new WaitForSeconds(time);
         currentMoveState = MoveState.AUTO;
-    }
-    
-    private Vector3 GetGroundHorizontal()
-    {
-        Vector3 rayOrigin = transform.position;
-
-        rayOrigin.y += 0.25f;
-
-        Debug.Log(rayOrigin);
-
-        //自分の足元にRayを二本飛ばす
-
-        var rayL = new Ray(rayOrigin + Vector3.left * 0.25f, Vector3.down);
-        var rayR = new Ray(rayOrigin + Vector3.right * 0.25f, Vector3.down);
-
-
-        // 通常の床のみ衝突判定を取る
-        int layerMask = 1 << LayerMask.NameToLayer("Ground") | 1 << gameObject.layer;
-
-        float rayDistance = (transform.lossyScale.x / 2) + 0.02f;
-
-        RaycastHit hitL, hitR;
-        Physics.Raycast(rayOrigin + Vector3.left, Vector3.down, 5f, layerMask,QueryTriggerInteraction.);
-
-        Physics.Raycast(rayOrigin + Vector3.right, Vector3.down, layerMask, out hitL);
-
-        return Vector3.zero;
     }
 }

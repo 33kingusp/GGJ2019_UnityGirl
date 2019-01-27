@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae68ea83879549c42a06a9a521ca289b, type: 3}
+  m_Name: Stage3
+  m_EditorClassIdentifier: 
+  memo: 
+  talkInfoList:
+  - word: "\u30AC\u30A1\u30FC\uFF01\n"
+    wordSpeed: 0.1
+    talkSide: 0
+    leftCharacter: {fileID: 22100000, guid: 3e9745c83b6254f3bb77c3c1f0b72dd2, type: 2}
+    leftCharacterAnimationSpeed: 0
+    rightCharacter: {fileID: 22100000, guid: 062b7b1c9b6c7ff4aade8b8bcb22d723, type: 2}
+    rightCharacterAnimationSpeed: 0
+  - word: "\u308F\u3041\u3001\u30AB\u30E9\u30B9\u3055\u3093\u3060"
+    wordSpeed: 0.1
+    talkSide: 1
+    leftCharacter: {fileID: 22100000, guid: 3e9745c83b6254f3bb77c3c1f0b72dd2, type: 2}
+    leftCharacterAnimationSpeed: 0
+    rightCharacter: {fileID: 22100000, guid: 062b7b1c9b6c7ff4aade8b8bcb22d723, type: 2}
+    rightCharacterAnimationSpeed: 0
+  - word: "\u3046\u3045\u3001\u6016\u3044\u3088\u3049\u301C...\n\u30DE\u30DE..."
+    wordSpeed: 0.1
+    talkSide: 1
+    leftCharacter: {fileID: 22100000, guid: 3e9745c83b6254f3bb77c3c1f0b72dd2, type: 2}
+    leftCharacterAnimationSpeed: 0
+    rightCharacter: {fileID: 22100000, guid: 062b7b1c9b6c7ff4aade8b8bcb22d723, type: 2}
+    rightCharacterAnimationSpeed: 0

@@ -29,7 +29,10 @@ public class StageManager : MonoBehaviour
 	// -------------------------------- 以下デバッグ確認用
 
 	[SerializeField]
-	bool isEnd;
+	bool isClear;
+
+	[SerializeField]
+	bool isGameOver;
 
 	// 画面から消えた女の子数
 	// ゴール、障害物で消失したらカウントアップ
@@ -72,7 +75,8 @@ public class StageManager : MonoBehaviour
     void Start()
     {
 		// 初期化
-		isEnd = false;
+		isClear = false;
+		isGameOver = false;
 		deletedGirlCount = 0;
 		currentTime = 0;
 		currentUsedGimmick1 = 0;
@@ -82,43 +86,64 @@ public class StageManager : MonoBehaviour
 		goalGirlCount = 0;
     }
 
-    void Update()
+	private void FixedUpdate()
+	{
+		// FIXME 秒数増加。ちょっと不安なので、いいのがあったら教えて
+		currentTime += Time.deltaTime;
+	}
+
+	void Update()
     {
+		// 終了フラグ判定
+		SetEndFlag();
+
 		// 終了処理
-		if (JudgeIsEnd())
+		if (isGameOver == true)
 		{
-			if (goalGirlCount > 0)
-			{
-				// クリア処理
-				StageClear();
-			}
-			else
-			{
-				// ゲームオーバー処理
-				StageGameOver();
-			}
+			// ゲームオーバー処理
+			StageGameOver();
+		}
+		else if(isClear == true)
+		{
+			// クリア処理
+			StageClear();
 		}
     }
 
 	/// <summary>
-	/// 終了判定
+	/// 終了判定をセットする
 	/// </summary>
-	/// <returns></returns>
-	bool JudgeIsEnd()
+	void SetEndFlag()
 	{
 		// 時間制限か
 		if(stageData.timeLimit <= currentTime)
 		{
-			isEnd = true;
+			// 一体でもゴールしてたらクリア
+			if (goalGirlCount > 0)
+			{
+				isClear = true;
+			}
+			else
+			{
+				isGameOver = true;
+			}
 		}
 
 		// 女の子が全て消失したか
 		if (stageData.spawnGirls <= deletedGirlCount)
 		{
-			isEnd = true;
+			if (goalGirlCount > 0)
+			{
+				// ゲームオーバーの時は更新しない
+				if (isGameOver == false) {
+					isClear = true;
+				}
+			}
+			else
+			{
+				isGameOver = true;
+			}
 		}
-
-		return isEnd;
 	}
 
 	/// <summary>
@@ -190,9 +215,8 @@ public class StageManager : MonoBehaviour
 	/// </summary>
 	void StageClear()
 	{
-		Debug.Log("stage clear");
 		clearPanel.SetActive(true);
-		RecordManager.Instance.SaveRecord(stageData.stageId, stageData.spawnGirls, goalGirlCount, currentTime);
+		//RecordManager.Instance.SaveRecord(stageData.stageId, stageData.spawnGirls, goalGirlCount, currentTime);
 	}
 
 	/// <summary>
@@ -200,34 +224,29 @@ public class StageManager : MonoBehaviour
 	/// </summary>
 	void StageGameOver()
 	{
-		Debug.Log("gameover");
 		gameOverPanel.SetActive(true);
 	}
 
+	/// <summary>
+	/// ギミックボタンが押された（StageManager側処理）
+	/// </summary>
+	/// <param name="gimmicNo"></param>
     public void OnClickGimmick(int gimmicNo)
     {
         currentGimmickNo = gimmicNo;
     }
 
-    /*
-	public void OnClickGimmick1()
+	/// <summary>
+	/// 残り時間を取得
+	/// </summary>
+	public int GetRemainigTime()
 	{
-		currentGimmickNo = 1;
+		// マイナスにならないように0で止める
+		if (stageData.timeLimit - currentTime <= 0)
+		{
+			return 0;
+		}
+		return (int)(stageData.timeLimit - currentTime);
 	}
 
-	public void OnClickGimmick2()
-	{
-		currentGimmickNo = 2;
-	}
-
-	public void OnClickGimmick3()
-	{
-		currentGimmickNo = 3;
-	}
-
-	public void OnClickGimmick4()
-	{
-		currentGimmickNo = 4;
-	}
-    */
 }

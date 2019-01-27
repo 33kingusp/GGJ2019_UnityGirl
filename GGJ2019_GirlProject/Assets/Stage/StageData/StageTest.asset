@@ -20,10 +20,12 @@ MonoBehaviour:
   gimmick1Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
     type: 3}
   gimmick1Limit: 2
-  gimmick2Object: {fileID: 3310093692017745428, guid: 7b6ff67b2aad75346af2c16b2260b2ca,
+  gimmick2Object: {fileID: 3986458964458442122, guid: 96152e8aff1830a4db82e66cf156931f,
     type: 3}
   gimmick2Limit: 2
-  gimmick3Object: {fileID: 0}
-  gimmick3Limit: 0
-  gimmick4Object: {fileID: 0}
-  gimmick4Limit: 0
+  gimmick3Object: {fileID: 3310093692017745428, guid: 7b6ff67b2aad75346af2c16b2260b2ca,
+    type: 3}
+  gimmick3Limit: 12
+  gimmick4Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
+    type: 3}
+  gimmick4Limit: 12

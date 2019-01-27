@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4125928760040469133}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,7 +129,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.55
+  m_Radius: 0.4
   m_Height: 1.35
   m_Direction: 1
   m_Center: {x: 0, y: 0.675, z: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   groundRayDistance: 0.4
   graoundRayOrigin: 0
   groundRayBoxSize_Y: 0.05
-  sideMoveMaskLayer: 10
+  sideMoveMaskLayer: 0
   walkAudioClip: {fileID: 0}
 --- !u!114 &6858948050626873452
 MonoBehaviour:

@@ -16,7 +16,7 @@ MonoBehaviour:
   memo: 
   spawnGirls: 5
   spawnGirlsIntervalTime: 0.6
-  timeLimit: 30
+  timeLimit: 10
   gimmick1Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
     type: 3}
   gimmick1Limit: 2

@@ -25,4 +25,12 @@ public class PoleController : DangerObjectController
         this.crow = crow;
         isStopedCrow = true;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(isStopedCrow && other.gameObject.layer == LayerMask.NameToLayer("Girl"))
+        {
+            DangerObjectManager.FearMover(other.gameObject, gameObject);
+        }
+    } 
 }
