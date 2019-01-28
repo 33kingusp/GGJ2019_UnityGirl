@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageId: 0
   memo: 
-  spawnGirls: 10
-  spawnGirlsIntervalTime: 1
-  timeLimit: 50
+  spawnGirls: 3
+  spawnGirlsIntervalTime: 3
+  timeLimit: 60
   gimmick1Object: {fileID: 5714564742367245214, guid: 75a3015987520b84488ef806d9971390,
     type: 3}
-  gimmick1Limit: 1
+  gimmick1Limit: 2
   gimmick2Object: {fileID: 3310093692017745428, guid: 7b6ff67b2aad75346af2c16b2260b2ca,
     type: 3}
   gimmick2Limit: 1
